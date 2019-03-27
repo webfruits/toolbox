@@ -1,4 +1,9 @@
 import { Signal } from "@webfruits/core/dist/signal/Signal";
+/******************************************************************
+ * SwipeController
+ *
+ * @author matthias.schulz@jash.de
+ *****************************************************************/
 export declare class SwipeController {
     private _element;
     /******************************************************************

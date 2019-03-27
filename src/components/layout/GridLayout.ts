@@ -1,10 +1,10 @@
+import {UIComponent} from "@webfruits/core";
+
 /******************************************************************
  * GridLayout
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-import {UIComponent} from "@webfruits/core";
-
 
 export class GridLayout extends UIComponent {
 
