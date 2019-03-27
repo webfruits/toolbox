@@ -34,7 +34,7 @@ RequestUtils.getURL("assets/logo.svg", (svg: string) => {
 });
 ```
 ### Controller
-####SwipeController
+#### SwipeController
 ... dispatches `Signals` when swipe gestures were recognized on an `HTMLElement`.
 ```typescript
 import {SwipeController} from "./controller/input/SwipeController";
@@ -43,7 +43,7 @@ let swipeController = new SwipeController(htmlElement);
 swipeController.onRightSwipeSignal.add(() => console.log("onSwipedToTheRight"));
 swipeController.onLeftSwipeSignal.add(() => console.log("onSwipedToTheLeft"));
 ```
-####WheelController
+#### WheelController
 ... dispatches `Signals` when scroll or vertical swipe gestures were regonized on an `HTMLElement` 
 ```typescript
 import {WheelController} from "./controller/input/WheelController";
