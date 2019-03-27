@@ -1,0 +1,35 @@
+{
+  "name": "@webfruits/toolbox",
+  "version": "0.1.0",
+  "description": "A TypeScript library for building user interfaces using the real DOM.",
+  "homepage": "https://webfruits.io",
+  "license": "MIT License",
+  "author": {
+    "name": "Matthias Schulz",
+    "email": "matthias.schulz@jash.de",
+    "url": "https://matthiasschulz.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webfruits/toolbox.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist/ && tsc",
+    "publish": "npm run build && npm publish --access=public"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "@webfruits/core": "latest"
+  },
+  "keywords": [
+    "frontend",
+    "ui",
+    "user-interface",
+    "library",
+    "typescript"
+  ]
+}
