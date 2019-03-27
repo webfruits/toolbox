@@ -1,7 +1,7 @@
 {
   "name": "@webfruits/toolbox",
   "version": "0.1.0",
-  "description": "A TypeScript library for building user interfaces using the real DOM.",
+  "description": "Additional features like SVGComponent, GridLayout and a lot of utilities based on webfruits/core",
   "homepage": "https://webfruits.io",
   "license": "MIT License",
   "author": {

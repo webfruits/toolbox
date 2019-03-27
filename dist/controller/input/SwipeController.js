@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var NativeEventsController_1 = require("@webfruits/core/dist/controller/NativeEventsController");
+var Signal_1 = require("@webfruits/core/dist/signal/Signal");
 /******************************************************************
  * SwipeController
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-var NativeEventsController_1 = require("@webfruits/core/dist/controller/NativeEventsController");
-var Signal_1 = require("@webfruits/core/dist/signal/Signal");
 var SwipeController = /** @class */ (function () {
     /******************************************************************
      * Constructor

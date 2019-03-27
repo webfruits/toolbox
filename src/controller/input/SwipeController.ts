@@ -1,11 +1,11 @@
+import {NativeEventsController} from "@webfruits/core/dist/controller/NativeEventsController";
+import {Signal} from "@webfruits/core/dist/signal/Signal";
+
 /******************************************************************
  * SwipeController
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-import {NativeEventsController} from "@webfruits/core/dist/controller/NativeEventsController";
-import {Signal} from "@webfruits/core/dist/signal/Signal";
-
 
 export class SwipeController {
 

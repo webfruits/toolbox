@@ -13,12 +13,12 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@webfruits/core");
 /******************************************************************
  * GridLayout
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-var core_1 = require("@webfruits/core");
 var GridLayout = /** @class */ (function (_super) {
     __extends(GridLayout, _super);
     /******************************************************************

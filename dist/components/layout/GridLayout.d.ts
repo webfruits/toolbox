@@ -1,9 +1,9 @@
+import { UIComponent } from "@webfruits/core";
 /******************************************************************
  * GridLayout
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-import { UIComponent } from "@webfruits/core";
 export declare class GridLayout extends UIComponent {
     private _numColumns;
     private _gapWidth;
