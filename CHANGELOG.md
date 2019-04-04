@@ -2,5 +2,8 @@
 
 #Changelog
 
+## v0.1.5
+* Fixed: `RequestUtils.getURL` option arguement object not optional anymore 
+
 ## v0.1.4
 * Optimized: `RequestUtils.getURL` to use only a flexible options argument object 
