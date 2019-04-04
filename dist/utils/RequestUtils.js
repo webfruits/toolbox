@@ -9,7 +9,6 @@ var RequestUtils = /** @class */ (function () {
     function RequestUtils() {
     }
     RequestUtils.getURL = function (options) {
-        if (options === void 0) { options = null; }
         var xmlHttpRequest = new XMLHttpRequest();
         xmlHttpRequest.onprogress = function (e) {
             if (options && options.progressListener) {

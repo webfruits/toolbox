@@ -13,7 +13,7 @@ export class RequestUtils {
             sendData?: any,
             requestHeaders?: {key: string, value: string}[],
             progressListener?: (e: ProgressEvent) => void,
-        } = null): XMLHttpRequest {
+        }): XMLHttpRequest {
         let xmlHttpRequest = new XMLHttpRequest();
         xmlHttpRequest.onprogress = function(e: ProgressEvent) {
             if (options && options.progressListener) {

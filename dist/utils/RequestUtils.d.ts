@@ -4,7 +4,7 @@
  * @author matthias.schulz@jash.de
  *****************************************************************/
 export declare class RequestUtils {
-    static getURL(options?: {
+    static getURL(options: {
         url: string;
         resultListener: (e: any) => void;
         usePost?: boolean;
