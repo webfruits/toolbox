@@ -50,7 +50,7 @@ var YoutubeVideo = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    YoutubeVideo.prototype.destory = function () {
+    YoutubeVideo.prototype.destroy = function () {
         _super.prototype.destroy.call(this);
         this.onVideoCompletedSignal.removeAll();
         this.onVideoPlayingSignal.removeAll();
@@ -151,7 +151,9 @@ var YoutubeVideo = /** @class */ (function (_super) {
      * Events
      *****************************************************************/
     YoutubeVideo.prototype.onPlayerReady = function () {
-        this.playVideo();
+        if (this._playerVars.autoplay) {
+            this.playVideo();
+        }
     };
     YoutubeVideo.prototype.onPlayerStateChanged = function () {
         switch (this._ytpAPI.getPlayerState()) {

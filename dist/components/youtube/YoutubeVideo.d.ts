@@ -29,7 +29,7 @@ export declare class YoutubeVideo extends UIComponent {
      * Public Methodes
      *****************************************************************/
     readonly ytpAPI: any;
-    destory(): void;
+    destroy(): void;
     updateStyles(): void;
     play(): void;
     stop(): void;

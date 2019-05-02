@@ -27,7 +27,7 @@ export class YoutubeVideo extends UIComponent {
 	};
 
 	private _ytpAPI: any;
-	private _playerVars: {};
+	private _playerVars: any;
 	private _iframeContainer: UIComponent;
 
 	public onVideoCompletedSignal = new Signal();
@@ -54,7 +54,7 @@ export class YoutubeVideo extends UIComponent {
 		return this._ytpAPI;
 	}
 
-	public destory() {
+	public destroy() {
 		super.destroy();
 		this.onVideoCompletedSignal.removeAll();
 		this.onVideoPlayingSignal.removeAll();
@@ -162,7 +162,9 @@ export class YoutubeVideo extends UIComponent {
 	 *****************************************************************/
 
 	private onPlayerReady() {
-		this.playVideo();
+	    if (this._playerVars.autoplay) {
+            this.playVideo();
+        }
 	}
 
 	private onPlayerStateChanged() {
