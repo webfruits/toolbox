@@ -134,7 +134,6 @@ export class YoutubeVideo extends UIComponent {
 				'onStateChange': () => this.onPlayerStateChanged()
 			}
 		});
-		this.onYTPAPIAvailableSignal.dispatch();
 	}
 
 	private playVideo() {
@@ -165,6 +164,7 @@ export class YoutubeVideo extends UIComponent {
 	    if (this._playerVars.autoplay) {
             this.playVideo();
         }
+        this.onYTPAPIAvailableSignal.dispatch();
 	}
 
 	private onPlayerStateChanged() {

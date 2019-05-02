@@ -125,7 +125,6 @@ var YoutubeVideo = /** @class */ (function (_super) {
                 'onStateChange': function () { return _this.onPlayerStateChanged(); }
             }
         });
-        this.onYTPAPIAvailableSignal.dispatch();
     };
     YoutubeVideo.prototype.playVideo = function () {
         if (!this._ytpAPI)
@@ -154,6 +153,7 @@ var YoutubeVideo = /** @class */ (function (_super) {
         if (this._playerVars.autoplay) {
             this.playVideo();
         }
+        this.onYTPAPIAvailableSignal.dispatch();
     };
     YoutubeVideo.prototype.onPlayerStateChanged = function () {
         switch (this._ytpAPI.getPlayerState()) {
