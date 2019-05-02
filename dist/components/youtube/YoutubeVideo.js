@@ -50,7 +50,7 @@ var YoutubeVideo = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    YoutubeVideo.prototype.destory = function () {
+    YoutubeVideo.prototype.destroy = function () {
         _super.prototype.destroy.call(this);
         this.onVideoCompletedSignal.removeAll();
         this.onVideoPlayingSignal.removeAll();
@@ -125,7 +125,6 @@ var YoutubeVideo = /** @class */ (function (_super) {
                 'onStateChange': function () { return _this.onPlayerStateChanged(); }
             }
         });
-        this.onYTPAPIAvailableSignal.dispatch();
     };
     YoutubeVideo.prototype.playVideo = function () {
         if (!this._ytpAPI)
@@ -151,7 +150,10 @@ var YoutubeVideo = /** @class */ (function (_super) {
      * Events
      *****************************************************************/
     YoutubeVideo.prototype.onPlayerReady = function () {
-        this.playVideo();
+        if (this._playerVars.autoplay) {
+            this.playVideo();
+        }
+        this.onYTPAPIAvailableSignal.dispatch();
     };
     YoutubeVideo.prototype.onPlayerStateChanged = function () {
         switch (this._ytpAPI.getPlayerState()) {

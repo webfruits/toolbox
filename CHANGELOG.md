@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.7
+* Optimized: `YoutubeVideo`
+
 ## v0.1.6
 * Added: `YoutubeVideo` – an easy way to playback and control videos from Youtube
 
