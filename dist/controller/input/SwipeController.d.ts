@@ -12,11 +12,12 @@ export declare class SwipeController {
     private _touchStartX;
     private _touchStartY;
     private _mouseStartX;
-    private _swipeTriggered;
     private _enabled;
     private _isMouseDown;
-    private _isSwiping;
     private _preventSwiping;
+    private _isSwiping;
+    private _swipeDetecting;
+    private _swipeTriggered;
     private _swipeDetectThreshold;
     private _elementEvents;
     onLeftSwipeSignal: Signal<void>;

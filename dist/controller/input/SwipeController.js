@@ -46,8 +46,8 @@ var SwipeController = /** @class */ (function () {
             return this._swipeDetectThreshold;
         },
         set: function (value) {
-            if (value < 1)
-                value = 1;
+            if (value < 20)
+                value = 20;
             this._swipeDetectThreshold = value;
         },
         enumerable: true,
@@ -77,18 +77,20 @@ var SwipeController = /** @class */ (function () {
     SwipeController.prototype.checkForSwipe = function (dx) {
         if (this._swipeTriggered)
             return;
-        if (Math.abs(dx) > this._swipeDetectThreshold) {
-            this._swipeTriggered = true;
-            if (dx > 0) {
+        if (Math.abs(dx) > 20) {
+            this._swipeDetecting = true;
+            if (dx > this._swipeDetectThreshold) {
+                this._swipeTriggered = true;
                 this.onRightSwipeSignal.dispatch();
             }
-            else {
+            else if (dx < -this._swipeDetectThreshold) {
+                this._swipeTriggered = true;
                 this.onLeftSwipeSignal.dispatch();
             }
         }
     };
     SwipeController.prototype.checkPreventScrolling = function (e) {
-        if (this._swipeTriggered) {
+        if (this._swipeTriggered || this._swipeDetecting) {
             e.preventDefault();
             return;
         }
@@ -121,6 +123,7 @@ var SwipeController = /** @class */ (function () {
         if (!this._enabled)
             return;
         this._swipeTriggered = false;
+        this._swipeDetecting = false;
         this._isSwiping = false;
         this.onSwipeEndSignal.dispatch();
     };
