@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.8
+* Added: `swipeDetectThreshold` property for `SwipeController` 
+
 ## v0.1.7
 * Optimized: `YoutubeVideo`
 
