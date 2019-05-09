@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.9
+* Fixed: use latest @webfruits/core 
+
 ## v0.1.8
 * Added: `swipeDetectThreshold` property for `SwipeController` 
 
