@@ -22,6 +22,8 @@ export class SwipeController {
     private _isSwiping: boolean;
     private _preventSwiping: boolean;
 
+    private _swipeDetectThreshold = 30;
+
     private _elementEvents: NativeEventsController;
 
     public onLeftSwipeSignal = new Signal();
@@ -53,6 +55,15 @@ export class SwipeController {
         return this._isSwiping;
     }
 
+    get swipeDetectThreshold(): number {
+        return this._swipeDetectThreshold;
+    }
+
+    set swipeDetectThreshold(value: number) {
+        if (value < 1) value = 1;
+        this._swipeDetectThreshold = value;
+    }
+
     public destroy() {
         this._elementEvents.destroy();
         this.onLeftSwipeSignal.removeAll();
@@ -78,7 +89,7 @@ export class SwipeController {
 
     private checkForSwipe(dx: number) {
         if (this._swipeTriggered) return;
-        if (Math.abs(dx) > 30) {
+        if (Math.abs(dx) > this._swipeDetectThreshold) {
             this._swipeTriggered = true;
             if (dx > 0) {
                 this.onRightSwipeSignal.dispatch();

@@ -14,6 +14,7 @@ var SwipeController = /** @class */ (function () {
     function SwipeController(_element) {
         this._element = _element;
         this._enabled = true;
+        this._swipeDetectThreshold = 30;
         this.onLeftSwipeSignal = new Signal_1.Signal();
         this.onRightSwipeSignal = new Signal_1.Signal();
         this.onSwipeEndSignal = new Signal_1.Signal();
@@ -36,6 +37,18 @@ var SwipeController = /** @class */ (function () {
     Object.defineProperty(SwipeController.prototype, "isSwiping", {
         get: function () {
             return this._isSwiping;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SwipeController.prototype, "swipeDetectThreshold", {
+        get: function () {
+            return this._swipeDetectThreshold;
+        },
+        set: function (value) {
+            if (value < 1)
+                value = 1;
+            this._swipeDetectThreshold = value;
         },
         enumerable: true,
         configurable: true
@@ -64,7 +77,7 @@ var SwipeController = /** @class */ (function () {
     SwipeController.prototype.checkForSwipe = function (dx) {
         if (this._swipeTriggered)
             return;
-        if (Math.abs(dx) > 30) {
+        if (Math.abs(dx) > this._swipeDetectThreshold) {
             this._swipeTriggered = true;
             if (dx > 0) {
                 this.onRightSwipeSignal.dispatch();

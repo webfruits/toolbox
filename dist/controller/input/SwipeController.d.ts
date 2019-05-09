@@ -17,6 +17,7 @@ export declare class SwipeController {
     private _isMouseDown;
     private _isSwiping;
     private _preventSwiping;
+    private _swipeDetectThreshold;
     private _elementEvents;
     onLeftSwipeSignal: Signal<void>;
     onRightSwipeSignal: Signal<void>;
@@ -31,6 +32,7 @@ export declare class SwipeController {
      *****************************************************************/
     enabled: boolean;
     readonly isSwiping: boolean;
+    swipeDetectThreshold: number;
     destroy(): void;
     /******************************************************************
      * Private Methodes
