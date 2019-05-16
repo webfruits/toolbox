@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.12
+* Fixed: `YoutubeVideo` throwing errors if not detached to dom anymore 
+
 ## v0.1.11
 * Improved: `YoutubeVideo` – added load(), which only loads YTPlayer, but doesn't playback it if playerVars.autoplay is set to false
 

@@ -140,16 +140,25 @@ var YoutubeVideo = /** @class */ (function (_super) {
     YoutubeVideo.prototype.stopVideo = function () {
         if (!this._ytpAPI)
             return;
+        if (!this._ytpAPI.pauseVideo)
+            return;
         this._ytpAPI.pauseVideo();
     };
     YoutubeVideo.prototype.destroyYTPlayer = function () {
         if (!this._ytpAPI)
             return;
-        this._ytpAPI.stopVideo();
-        this._ytpAPI.clearVideo();
-        this._ytpAPI.destroy();
+        try {
+            this._ytpAPI.stopVideo();
+            this._ytpAPI.clearVideo();
+            this._ytpAPI.destroy();
+        }
+        catch (e) {
+            // if ytp is not attached to the DOM anymore, will throw an error
+        }
+        if (this._iframeContainer.view) {
+            this._iframeContainer.removeAllChildren();
+        }
         this._ytpAPI = null;
-        this._iframeContainer.removeAllChildren();
         this.onYTPAPIDestroyedSignal.dispatch();
     };
     /******************************************************************
