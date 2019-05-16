@@ -2,6 +2,15 @@
 
 #Changelog
 
+## v0.1.10
+* Fixed: swiping gets abort when using higher values for `swipeDetectThreshold` in `SwipeController`
+
+## v0.1.9
+* Fixed: use latest @webfruits/core 
+
+## v0.1.8
+* Added: `swipeDetectThreshold` property for `SwipeController` 
+
 ## v0.1.7
 * Optimized: `YoutubeVideo`
 

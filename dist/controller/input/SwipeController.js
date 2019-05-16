@@ -14,6 +14,7 @@ var SwipeController = /** @class */ (function () {
     function SwipeController(_element) {
         this._element = _element;
         this._enabled = true;
+        this._swipeDetectThreshold = 30;
         this.onLeftSwipeSignal = new Signal_1.Signal();
         this.onRightSwipeSignal = new Signal_1.Signal();
         this.onSwipeEndSignal = new Signal_1.Signal();
@@ -36,6 +37,18 @@ var SwipeController = /** @class */ (function () {
     Object.defineProperty(SwipeController.prototype, "isSwiping", {
         get: function () {
             return this._isSwiping;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SwipeController.prototype, "swipeDetectThreshold", {
+        get: function () {
+            return this._swipeDetectThreshold;
+        },
+        set: function (value) {
+            if (value < 20)
+                value = 20;
+            this._swipeDetectThreshold = value;
         },
         enumerable: true,
         configurable: true
@@ -64,18 +77,20 @@ var SwipeController = /** @class */ (function () {
     SwipeController.prototype.checkForSwipe = function (dx) {
         if (this._swipeTriggered)
             return;
-        if (Math.abs(dx) > 30) {
-            this._swipeTriggered = true;
-            if (dx > 0) {
+        if (Math.abs(dx) > 20) {
+            this._swipeDetecting = true;
+            if (dx > this._swipeDetectThreshold) {
+                this._swipeTriggered = true;
                 this.onRightSwipeSignal.dispatch();
             }
-            else {
+            else if (dx < -this._swipeDetectThreshold) {
+                this._swipeTriggered = true;
                 this.onLeftSwipeSignal.dispatch();
             }
         }
     };
     SwipeController.prototype.checkPreventScrolling = function (e) {
-        if (this._swipeTriggered) {
+        if (this._swipeTriggered || this._swipeDetecting) {
             e.preventDefault();
             return;
         }
@@ -108,6 +123,7 @@ var SwipeController = /** @class */ (function () {
         if (!this._enabled)
             return;
         this._swipeTriggered = false;
+        this._swipeDetecting = false;
         this._isSwiping = false;
         this.onSwipeEndSignal.dispatch();
     };
