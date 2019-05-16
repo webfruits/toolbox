@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.11
+* Improved: `YoutubeVideo` – added load(), which only loads YTPlayer, but doesn't playback it if playerVars.autoplay is set to false
+
 ## v0.1.10
 * Fixed: swiping gets abort when using higher values for `swipeDetectThreshold` in `SwipeController`
 
