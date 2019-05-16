@@ -69,8 +69,11 @@ var YoutubeVideo = /** @class */ (function (_super) {
             backgroundColor: "black"
         });
     };
-    YoutubeVideo.prototype.play = function () {
+    YoutubeVideo.prototype.load = function () {
         this.loadYouTubeAPI();
+    };
+    YoutubeVideo.prototype.play = function () {
+        this.loadYouTubeAPI(true);
     };
     YoutubeVideo.prototype.stop = function () {
         this.stopVideo();
@@ -82,26 +85,28 @@ var YoutubeVideo = /** @class */ (function (_super) {
         this._iframeContainer = new core_1.UIComponent("yt-iframe-container");
         this.addChild(this._iframeContainer);
     };
-    YoutubeVideo.prototype.loadYouTubeAPI = function () {
+    YoutubeVideo.prototype.loadYouTubeAPI = function (playIt) {
         var _this = this;
+        if (playIt === void 0) { playIt = false; }
         if (window['YT'] && window['YT'].Player) {
-            this.initYTElement();
+            this.initYTElement(playIt);
             return;
         }
         if (document.getElementById("yt-iframe-api")) {
-            this.initYTElement();
+            this.initYTElement(playIt);
             return;
         }
         var scriptElement = document.createElement('script');
         scriptElement.src = "https://www.youtube.com/iframe_api";
         scriptElement.id = "yt-iframe-api";
         window['onYouTubeIframeAPIReady'] = function () {
-            _this.initYTElement();
+            _this.initYTElement(playIt);
         };
         document.body.appendChild(scriptElement);
     };
-    YoutubeVideo.prototype.initYTElement = function () {
+    YoutubeVideo.prototype.initYTElement = function (playIt) {
         var _this = this;
+        if (playIt === void 0) { playIt = false; }
         if (this._ytpAPI) {
             this.destroyYTPlayer();
         }
@@ -109,19 +114,20 @@ var YoutubeVideo = /** @class */ (function (_super) {
         var ytElement = new core_1.UIComponent("yt-player");
         ytElement.view.id = "youtube_" + this._youtubeID + "_" + Math.random().toString().replace(".", "");
         ytElement.onAddedToStageSignal.addOnce(function () {
-            _this.initYTPlayer();
+            _this.initYTPlayer(playIt);
         });
         this._iframeContainer.addChild(ytElement);
     };
-    YoutubeVideo.prototype.initYTPlayer = function () {
+    YoutubeVideo.prototype.initYTPlayer = function (playIt) {
         var _this = this;
+        if (playIt === void 0) { playIt = false; }
         this._ytpAPI = new window['YT'].Player(this._iframeContainer.children[0].view.id, {
             videoId: this._youtubeID,
             width: "100%",
             height: "100%",
             playerVars: this._playerVars,
             events: {
-                'onReady': function () { return _this.onPlayerReady(); },
+                'onReady': function () { return _this.onPlayerReady(playIt); },
                 'onStateChange': function () { return _this.onPlayerStateChanged(); }
             }
         });
@@ -149,8 +155,8 @@ var YoutubeVideo = /** @class */ (function (_super) {
     /******************************************************************
      * Events
      *****************************************************************/
-    YoutubeVideo.prototype.onPlayerReady = function () {
-        if (this._playerVars.autoplay) {
+    YoutubeVideo.prototype.onPlayerReady = function (playIt) {
+        if (this._playerVars.autoplay || playIt) {
             this.playVideo();
         }
         this.onYTPAPIAvailableSignal.dispatch();
@@ -172,7 +178,7 @@ var YoutubeVideo = /** @class */ (function (_super) {
      * Properties
      *****************************************************************/
     YoutubeVideo.DEFAULT_PLAYER_VARS = {
-        autoplay: 1,
+        autoplay: 0,
         controls: 1,
         rel: 0,
         fs: 1,

@@ -16,7 +16,7 @@ export class YoutubeVideo extends UIComponent {
 	 *****************************************************************/
 
 	public static readonly DEFAULT_PLAYER_VARS: {} = {
-		autoplay: 1,
+		autoplay: 0,
 		controls: 1,
 		rel: 0,
 		fs: 1,
@@ -75,8 +75,12 @@ export class YoutubeVideo extends UIComponent {
 		});
 	}
 
+	public load() {
+        this.loadYouTubeAPI();
+    }
+
 	public play() {
-		this.loadYouTubeAPI();
+		this.loadYouTubeAPI(true);
 	}
 
 	public stop() {
@@ -92,25 +96,25 @@ export class YoutubeVideo extends UIComponent {
 		this.addChild(this._iframeContainer);
 	}
 
-	private loadYouTubeAPI() {
+	private loadYouTubeAPI(playIt: boolean = false) {
 		if (window['YT'] && window['YT'].Player) {
-			this.initYTElement();
+			this.initYTElement(playIt);
 			return;
 		}
 		if (document.getElementById("yt-iframe-api")) {
-			this.initYTElement();
+			this.initYTElement(playIt);
 			return;
 		}
 		let scriptElement = document.createElement('script');
 		scriptElement.src = "https://www.youtube.com/iframe_api";
 		scriptElement.id = "yt-iframe-api";
 		window['onYouTubeIframeAPIReady'] = () => {
-			this.initYTElement();
+			this.initYTElement(playIt);
 		};
 		document.body.appendChild(scriptElement);
 	}
 
-	private initYTElement() {
+	private initYTElement(playIt: boolean = false) {
 		if (this._ytpAPI) {
 			this.destroyYTPlayer();
 		}
@@ -118,19 +122,19 @@ export class YoutubeVideo extends UIComponent {
 		let ytElement = new UIComponent("yt-player");
 		ytElement.view.id = "youtube_" + this._youtubeID + "_" + Math.random().toString().replace(".", "");
 		ytElement.onAddedToStageSignal.addOnce(() => {
-			this.initYTPlayer();
+			this.initYTPlayer(playIt);
 		});
 		this._iframeContainer.addChild(ytElement);
 	}
 
-	private initYTPlayer() {
+	private initYTPlayer(playIt: boolean = false) {
 		this._ytpAPI = new window['YT'].Player(this._iframeContainer.children[0].view.id, {
 			videoId: this._youtubeID,
 			width: "100%",
 			height: "100%",
 			playerVars: this._playerVars,
 			events: {
-				'onReady': () => this.onPlayerReady(),
+				'onReady': () => this.onPlayerReady(playIt),
 				'onStateChange': () => this.onPlayerStateChanged()
 			}
 		});
@@ -160,8 +164,8 @@ export class YoutubeVideo extends UIComponent {
 	 * Events
 	 *****************************************************************/
 
-	private onPlayerReady() {
-	    if (this._playerVars.autoplay) {
+	private onPlayerReady(playIt: boolean) {
+	    if (this._playerVars.autoplay || playIt) {
             this.playVideo();
         }
         this.onYTPAPIAvailableSignal.dispatch();
