@@ -4,6 +4,7 @@
  * @author matthias.schulz@jash.de
  *****************************************************************/
 export declare class URLUtils {
+    static getUrlParam(paraName: string, defaultValue?: string): string;
     static getUrlParams(): {
         [paraName: number]: string;
     };

@@ -8,6 +8,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var URLUtils = /** @class */ (function () {
     function URLUtils() {
     }
+    URLUtils.getUrlParam = function (paraName, defaultValue) {
+        if (defaultValue === void 0) { defaultValue = undefined; }
+        var value = URLUtils.getUrlParams()[paraName];
+        return value ? value : defaultValue;
+    };
     URLUtils.getUrlParams = function () {
         var vars = {};
         location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (substring) {

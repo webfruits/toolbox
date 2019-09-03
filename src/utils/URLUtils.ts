@@ -6,6 +6,11 @@
 
 export class URLUtils {
 
+    static getUrlParam(paraName: string, defaultValue: string = undefined): string {
+        let value = URLUtils.getUrlParams()[paraName];
+        return value ? value : defaultValue;
+    }
+
     static getUrlParams(): { [paraName: number]: string } {
         let vars = {};
         location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (substring: string, ...args: any[]) => {
