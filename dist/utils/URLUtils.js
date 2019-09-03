@@ -8,6 +8,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var URLUtils = /** @class */ (function () {
     function URLUtils() {
     }
+    URLUtils.getUrlParams = function () {
+        var vars = {};
+        location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (substring) {
+            var args = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args[_i - 1] = arguments[_i];
+            }
+            var paraName = args[0];
+            vars[paraName] = args[1];
+            return substring;
+        });
+        return vars;
+    };
     URLUtils.openLink = function (href, openInNewWindow, openAsPopup) {
         if (openInNewWindow === void 0) { openInNewWindow = true; }
         if (openAsPopup === void 0) { openAsPopup = false; }

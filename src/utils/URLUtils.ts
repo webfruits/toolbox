@@ -6,6 +6,16 @@
 
 export class URLUtils {
 
+    static getUrlParams(): { [paraName: number]: string } {
+        let vars = {};
+        location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (substring: string, ...args: any[]) => {
+            let paraName = args[0];
+            vars[paraName] = args[1];
+            return substring;
+        });
+        return vars;
+    }
+
     static openLink(href: string, openInNewWindow: boolean = true, openAsPopup: boolean = false) {
         if (href.indexOf("mailto") != -1) {
             location.href = href;
