@@ -12,6 +12,10 @@ export class SVGUtils {
         return svgElement.querySelectorAll("#" + idPrefix + id)[0] as SVGElement;
     }
 
+    static getElementsByID(svgElement: SVGElement, idPrefix: string, id: string): SVGElement[] {
+        return Array.from(svgElement.querySelectorAll("#" + idPrefix + id));
+    }
+
     static getElementsByPartOfID(svgElement: SVGElement, idPrefix: string, partofID: string): SVGElement[] {
         return Array.from(svgElement.querySelectorAll("[id^=" + idPrefix + partofID + "]")) as SVGElement[];
     }

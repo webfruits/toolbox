@@ -12,6 +12,9 @@ var SVGUtils = /** @class */ (function () {
     SVGUtils.getElementByID = function (svgElement, idPrefix, id) {
         return svgElement.querySelectorAll("#" + idPrefix + id)[0];
     };
+    SVGUtils.getElementsByID = function (svgElement, idPrefix, id) {
+        return Array.from(svgElement.querySelectorAll("#" + idPrefix + id));
+    };
     SVGUtils.getElementsByPartOfID = function (svgElement, idPrefix, partofID) {
         return Array.from(svgElement.querySelectorAll("[id^=" + idPrefix + partofID + "]"));
     };

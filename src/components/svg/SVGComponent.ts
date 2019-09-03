@@ -66,6 +66,10 @@ export class SVGComponent extends UIComponent {
         return SVGUtils.getElementByID(this._svgRoot, this.idPrefix, id);
     }
 
+    public getElementsByID(id: string): SVGElement[] {
+        return SVGUtils.getElementsByID(this._svgRoot, this.idPrefix, id);
+    }
+
     /******************************************************************
      * Private Methodes
      *****************************************************************/

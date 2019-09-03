@@ -23,6 +23,7 @@ export declare class SVGComponent extends UIComponent {
     height: number;
     clearSizeDefinition(): void;
     getElementByID(id: string): SVGElement;
+    getElementsByID(id: string): SVGElement[];
     /******************************************************************
      * Private Methodes
      *****************************************************************/
