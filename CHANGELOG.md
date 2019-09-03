@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.14
+* Added: `URLUtils.getUrlParam(paraName, defaultValue)` to access a paramete from an URL
+
 ## v0.1.13
 * Added: `URLUtils.getUrlParams` to get access all parametes from an URL
 
