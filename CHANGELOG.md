@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.13
+* Added: `URLUtils.getUrlParams` to get access all parametes from an URL
+
 ## v0.1.12
 * Fixed: `YoutubeVideo` throwing errors if not detached to dom anymore 
 
