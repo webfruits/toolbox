@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.15
+* Added: `SVGUtils.getElementsByID` to get all SVGElements with the same id
+
 ## v0.1.14
 * Added: `URLUtils.getUrlParam(paraName, defaultValue)` to access a paramete from an URL
 
