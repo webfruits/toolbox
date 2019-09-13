@@ -2,6 +2,10 @@
 
 #Changelog
 
+
+## v0.1.16
+* Added: `errorListener` for `RequestUtils.getURL`
+
 ## v0.1.15
 * Added: `SVGUtils.getElementsByID` to get all SVGElements with the same id
 

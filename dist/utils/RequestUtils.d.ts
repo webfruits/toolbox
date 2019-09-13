@@ -14,5 +14,6 @@ export declare class RequestUtils {
             value: string;
         }[];
         progressListener?: (e: ProgressEvent) => void;
+        errorListener?: (message: string) => void;
     }): XMLHttpRequest;
 }

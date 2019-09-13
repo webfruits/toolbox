@@ -7,15 +7,16 @@
 export class RequestUtils {
 
     static getURL(options: {
-            url: string,
-            resultListener: (e: any) => void,
-            usePost?: boolean,
-            sendData?: any,
-            requestHeaders?: {key: string, value: string}[],
-            progressListener?: (e: ProgressEvent) => void,
-        }): XMLHttpRequest {
+        url: string,
+        resultListener: (e: any) => void,
+        usePost?: boolean,
+        sendData?: any,
+        requestHeaders?: { key: string, value: string }[],
+        progressListener?: (e: ProgressEvent) => void,
+        errorListener?: (message: string) => void
+    }): XMLHttpRequest {
         let xmlHttpRequest = new XMLHttpRequest();
-        xmlHttpRequest.onprogress = function(e: ProgressEvent) {
+        xmlHttpRequest.onprogress = function (e: ProgressEvent) {
             if (options && options.progressListener) {
                 options.progressListener(e);
             }
@@ -30,6 +31,11 @@ export class RequestUtils {
                 xmlHttpRequest.setRequestHeader(header.key, header.value);
             });
         }
+        xmlHttpRequest.onloadend = function () {
+            if (xmlHttpRequest.status == 404) {
+                options.errorListener("404: " + options.url);
+            }
+        };
         xmlHttpRequest.send(options && options.sendData ? options.sendData : null);
         return xmlHttpRequest;
     }
