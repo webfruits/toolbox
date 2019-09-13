@@ -25,6 +25,11 @@ var RequestUtils = /** @class */ (function () {
                 xmlHttpRequest.setRequestHeader(header.key, header.value);
             });
         }
+        xmlHttpRequest.onloadend = function () {
+            if (xmlHttpRequest.status == 404) {
+                options.errorListener("404: " + options.url);
+            }
+        };
         xmlHttpRequest.send(options && options.sendData ? options.sendData : null);
         return xmlHttpRequest;
     };
