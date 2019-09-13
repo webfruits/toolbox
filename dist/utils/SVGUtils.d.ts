@@ -5,6 +5,7 @@
  *****************************************************************/
 export declare class SVGUtils {
     static getElementByID(svgElement: SVGElement, idPrefix: string, id: string): SVGElement;
+    static getElementsByID(svgElement: SVGElement, idPrefix: string, id: string): SVGElement[];
     static getElementsByPartOfID(svgElement: SVGElement, idPrefix: string, partofID: string): SVGElement[];
     static getLocalTransform(svgElement: SVGElement): {
         x: number;

@@ -80,6 +80,9 @@ var SVGComponent = /** @class */ (function (_super) {
     SVGComponent.prototype.getElementByID = function (id) {
         return SVGUtils_1.SVGUtils.getElementByID(this._svgRoot, this.idPrefix, id);
     };
+    SVGComponent.prototype.getElementsByID = function (id) {
+        return SVGUtils_1.SVGUtils.getElementsByID(this._svgRoot, this.idPrefix, id);
+    };
     Object.defineProperty(SVGComponent.prototype, "idPrefix", {
         /******************************************************************
          * Private Methodes
