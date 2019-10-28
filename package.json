@@ -24,7 +24,7 @@
     "typescript": "3.4.5"
   },
   "dependencies": {
-    "@webfruits/core": "^0.1.12"
+    "@webfruits/core": "^0.1.13"
   },
   "keywords": [
     "frontend",
