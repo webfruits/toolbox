@@ -2,6 +2,8 @@
 
 #Changelog
 
+## v0.1.17
+* Updated: core dependency to v0.1.13
 
 ## v0.1.16
 * Added: `errorListener` for `RequestUtils.getURL`
