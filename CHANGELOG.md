@@ -2,6 +2,12 @@
 
 #Changelog
 
+## v0.1.18
+* Added: `QueryStylesController` to select and style one or multiple HTMLElements
+* Added: `RequestUtils.getPromisedData`
+* Refactored: `RequestUtils.getData` so that `url` is first argument (again)
+* Updated: core dependency to v0.1.14
+
 ## v0.1.17
 * Updated: core dependency to v0.1.13
 
