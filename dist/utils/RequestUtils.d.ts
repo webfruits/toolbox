@@ -3,10 +3,13 @@
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
+export declare type RequestErrorInfo = {
+    status: number;
+    url: string;
+};
 export declare class RequestUtils {
-    static getURL(options: {
-        url: string;
-        resultListener: (e: any) => void;
+    static getData(url: string, options?: {
+        resultListener?: (e: any) => void;
         usePost?: boolean;
         sendData?: any;
         requestHeaders?: {
@@ -14,6 +17,14 @@ export declare class RequestUtils {
             value: string;
         }[];
         progressListener?: (e: ProgressEvent) => void;
-        errorListener?: (message: string) => void;
+        errorListener?: (errorInfo: RequestErrorInfo) => void;
     }): XMLHttpRequest;
+    static getPromisedData(url: string, options?: {
+        usePost?: boolean;
+        sendData?: any;
+        requestHeaders?: {
+            key: string;
+            value: string;
+        }[];
+    }): Promise<void>;
 }
