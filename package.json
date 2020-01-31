@@ -24,7 +24,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@webfruits/core": "https://github.com/webfruits/core.git#develop"
+    "@webfruits/core": "^0.1.17"
   },
   "keywords": [
     "frontend",
