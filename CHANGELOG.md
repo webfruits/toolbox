@@ -2,6 +2,10 @@
 
 #Changelog
 
+## v0.1.19
+* Updated: core dependency to v0.1.17
+* Updated: TypeScript to v3.7.5
+
 ## v0.1.18
 * Added: `QueryStylesController` to select and style one or multiple HTMLElements
 * Added: `RequestUtils.getPromisedData`

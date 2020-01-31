@@ -1,6 +1,6 @@
 {
   "name": "@webfruits/toolbox",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Additional features like SVGComponent, GridLayout and a lot of utilities based on webfruits/core",
   "homepage": "https://webfruits.io",
   "license": "MIT License",
@@ -21,10 +21,10 @@
     "publish": "npm run build && npm publish --access=public"
   },
   "devDependencies": {
-    "typescript": "3.4.5"
+    "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@webfruits/core": "^0.1.14"
+    "@webfruits/core": "https://github.com/webfruits/core.git#develop"
   },
   "keywords": [
     "frontend",
