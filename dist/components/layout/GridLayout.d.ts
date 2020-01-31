@@ -17,8 +17,10 @@ export declare class GridLayout extends UIComponent {
     /******************************************************************
      * Public Methodes
      *****************************************************************/
-    numColumns: number;
-    gapWidth: number;
+    get numColumns(): number;
+    set numColumns(value: number);
+    get gapWidth(): number;
+    set gapWidth(value: number);
     addChild(item: UIComponent): void;
     updateStyles(): void;
 }

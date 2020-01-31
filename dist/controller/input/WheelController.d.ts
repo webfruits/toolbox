@@ -31,8 +31,8 @@ export declare class WheelController {
     /******************************************************************
      * Public Methodes
      *****************************************************************/
-    enabled: boolean;
-    preventDefault: boolean;
+    set enabled(value: boolean);
+    set preventDefault(value: boolean);
     destroy(): void;
     /******************************************************************
      * Private Methodes

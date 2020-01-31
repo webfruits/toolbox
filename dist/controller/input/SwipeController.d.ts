@@ -31,9 +31,11 @@ export declare class SwipeController {
     /******************************************************************
      * Public Methodes
      *****************************************************************/
-    enabled: boolean;
-    readonly isSwiping: boolean;
-    swipeDetectThreshold: number;
+    get enabled(): boolean;
+    set enabled(value: boolean);
+    get isSwiping(): boolean;
+    get swipeDetectThreshold(): number;
+    set swipeDetectThreshold(value: number);
     destroy(): void;
     /******************************************************************
      * Private Methodes
