@@ -33,10 +33,13 @@ export class URLUtils {
         }
     }
 
-    static downloadURL(url: string, filename: string) {
+    static downloadURL(url: string, filename?: string, useTargetBlank: boolean = false) {
         let anchorElement = document.createElement('a');
         document.body.appendChild(anchorElement);
-        anchorElement.download = filename;
+        if (useTargetBlank){
+            anchorElement.target = "_blank";
+        }
+        anchorElement.download = filename ? filename : url.match(/[^/\\&?]+\.\w{3,4}(?=([?&].*$|$))/)[0];
         anchorElement.href = url;
         anchorElement.click();
         anchorElement.remove();
