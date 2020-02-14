@@ -18,7 +18,7 @@ export class RequestUtils {
     }): XMLHttpRequest {
         let xmlHttpRequest = new XMLHttpRequest();
         xmlHttpRequest.onprogress = function (e: ProgressEvent) {
-            if (options && options.progressListener) {
+            if (options?.progressListener) {
                 options.progressListener(e);
             }
         };
@@ -27,8 +27,8 @@ export class RequestUtils {
                 options.resultListener(xmlHttpRequest.responseText);
             }
         };
-        xmlHttpRequest.open(options && options.usePost ? "POST" : "GET", url, true);
-        if (options && options.requestHeaders) {
+        xmlHttpRequest.open(options?.usePost ? "POST" : "GET", url, true);
+        if (options?.requestHeaders) {
             options.requestHeaders.forEach((header) => {
                 xmlHttpRequest.setRequestHeader(header.key, header.value);
             });
@@ -38,7 +38,7 @@ export class RequestUtils {
                 options.errorListener({status: xmlHttpRequest.status, url: url});
             }
         };
-        xmlHttpRequest.send(options && options.sendData ? options.sendData : null);
+        xmlHttpRequest.send(options?.sendData ?? null);
         return xmlHttpRequest;
     }
 
@@ -49,9 +49,9 @@ export class RequestUtils {
     }): Promise<void> {
         return new Promise((resolve: (result: any) => void, reject: (errorInfo: RequestErrorInfo) => void) => {
             RequestUtils.getData(url, {
-                sendData: options && options.sendData ? options.sendData : undefined,
-                usePost: options && options.usePost ? options.usePost : undefined,
-                requestHeaders: options && options.requestHeaders ? options.requestHeaders : undefined,
+                sendData: options?.sendData ?? undefined,
+                usePost: options?.usePost ?? undefined,
+                requestHeaders: options?.requestHeaders ?? undefined,
                 resultListener: (result: any) => resolve(result),
                 errorListener: (errorInfo: RequestErrorInfo) => reject(errorInfo)
             })
