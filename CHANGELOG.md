@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.1.22
+* Updated: core dependency to v0.1.19
+
 ## v0.1.21
 * Improved: `URLUtils.downloadURL` to have optional targetBlank and filename 
 
