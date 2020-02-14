@@ -3,7 +3,7 @@
 #Changelog
 
 ## v0.1.21
-* Updated: core dependency to v0.1.19
+* Improved: `URLUtils.downloadURL` to have optional targetBlank and filename 
 
 ## v0.1.20
 * Updated: core dependency to v0.1.18

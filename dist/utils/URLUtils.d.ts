@@ -9,5 +9,5 @@ export declare class URLUtils {
         [paraName: number]: string;
     };
     static openLink(href: string, openInNewWindow?: boolean, openAsPopup?: boolean): void;
-    static downloadURL(url: string, filename: string): void;
+    static downloadURL(url: string, filename?: string, useTargetBlank?: boolean): void;
 }
