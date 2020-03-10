@@ -2,6 +2,12 @@
 
 #Changelog
 
+## v0.1.23
+####Breaking Changes:
+You can ignore this if you have used `< v0.1.17`  
+If you have used `v0.1.18` to `v0.1.22`, you have to rename `RequestUtils.getData` to `RequestUtils.getUrl` and set `url` as config parameter (not as first argument)
+* Fixed: Now `RequestUtils.getUrl` is available again, instead of `RequestUtil.getData`
+
 ## v0.1.22
 * Updated: core dependency to v0.1.19
 
@@ -18,8 +24,12 @@
 ## v0.1.18
 * Added: `QueryStylesController` to select and style one or multiple HTMLElements
 * Added: `RequestUtils.getPromisedData`
-* Refactored: `RequestUtils.getData` so that `url` is first argument (again)
 * Updated: core dependency to v0.1.14
+
+####Breaking Changes:
+_**Breaking Changes up to v0.1.22.  
+Solution: use v0.1.23 at least**_
+* Refactored: `RequestUtils.getData` so that `url` is first argument (again)
 
 ## v0.1.17
 * Updated: core dependency to v0.1.13
