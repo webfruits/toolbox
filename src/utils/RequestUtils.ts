@@ -32,8 +32,8 @@ export class RequestUtils {
             });
         }
         xmlHttpRequest.onloadend = function () {
-            if (xmlHttpRequest.status == 404) {
-                options.errorListener("404: " + options.url);
+            if (xmlHttpRequest.status !== 200) {
+                options.errorListener({status: xmlHttpRequest.status, url: options.url});
             }
         };
         xmlHttpRequest.send(options && options.sendData ? options.sendData : null);
