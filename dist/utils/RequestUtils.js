@@ -27,7 +27,7 @@ var RequestUtils = /** @class */ (function () {
         }
         xmlHttpRequest.onloadend = function () {
             if (xmlHttpRequest.status !== 200) {
-                options.errorListener({ status: xmlHttpRequest.status, url: options.url });
+                options.errorListener({ status: xmlHttpRequest.status, url: options.url, response: xmlHttpRequest.response });
             }
         };
         xmlHttpRequest.send(options && options.sendData ? options.sendData : null);

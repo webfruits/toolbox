@@ -4,6 +4,8 @@
  * @author matthias.schulz@jash.de
  *****************************************************************/
 
+export type RequestErrorInfo = {status: number, url: string, response: any};
+
 export class RequestUtils {
 
     static getURL(options: {
@@ -13,7 +15,7 @@ export class RequestUtils {
         sendData?: any,
         requestHeaders?: { key: string, value: string }[],
         progressListener?: (e: ProgressEvent) => void,
-        errorListener?: (error: any) => void
+        errorListener?: (error: RequestErrorInfo) => void
     }): XMLHttpRequest {
         let xmlHttpRequest = new XMLHttpRequest();
         xmlHttpRequest.onprogress = function (e: ProgressEvent) {
@@ -33,7 +35,7 @@ export class RequestUtils {
         }
         xmlHttpRequest.onloadend = function () {
             if (xmlHttpRequest.status !== 200) {
-                options.errorListener({status: xmlHttpRequest.status, url: options.url});
+                options.errorListener({status: xmlHttpRequest.status, url: options.url, response: xmlHttpRequest.response});
             }
         };
         xmlHttpRequest.send(options && options.sendData ? options.sendData : null);

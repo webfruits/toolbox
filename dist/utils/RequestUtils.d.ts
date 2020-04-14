@@ -3,6 +3,11 @@
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
+export declare type RequestErrorInfo = {
+    status: number;
+    url: string;
+    response: any;
+};
 export declare class RequestUtils {
     static getURL(options: {
         url: string;
@@ -14,7 +19,7 @@ export declare class RequestUtils {
             value: string;
         }[];
         progressListener?: (e: ProgressEvent) => void;
-        errorListener?: (error: any) => void;
+        errorListener?: (error: RequestErrorInfo) => void;
     }): XMLHttpRequest;
     static getPromisedData(url: string, options?: {
         usePost?: boolean;
