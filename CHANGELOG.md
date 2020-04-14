@@ -2,9 +2,12 @@
 
 #Changelog
 
-## v0.1.24
-* Readded: more concret error message for `RequestUtils
+## v0.1.25
+* Added: error response and `RequestErrorInfo` to `RequestUtils`
 ``
+## v0.1.24
+* Readded: more concret error message for `RequestUtils`
+
 ## v0.1.23
 ####Breaking Changes:
 You can ignore this if you have used `< v0.1.17`  
