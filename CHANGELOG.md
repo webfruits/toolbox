@@ -2,7 +2,7 @@
 
 #Changelog
 ## v0.2.0
-####Breaking Changes:
+#### Breaking Changes:
 * Refactored: renamed `RequestErrorInfo` into `RequestResult` in `RequestUtils` and added `responseText` as additional info to it.
 * `RequestUtils.getURL.resultListener` and `RequestUtils.getURL.errorListener` sharing both `RequestResult` as argument type
 * Please update the success result type from `any` to `RequestResult` on `getURL().resultListener` or `getPromisedData().then` and use `RequestResult.responseText` to get the content as in previous versions
@@ -20,7 +20,7 @@
 * Readded: more concret error message for `RequestUtils`
 
 ## v0.1.23
-####Breaking Changes:
+#### Breaking Changes:
 You can ignore this if you have used `< v0.1.17`  
 If you have used `v0.1.18` to `v0.1.22`, you have to rename `RequestUtils.getData` to `RequestUtils.getUrl` and set `url` as config parameter (not as first argument)
 * Fixed: Now `RequestUtils.getUrl` is available again, instead of `RequestUtil.getData`
@@ -43,7 +43,7 @@ If you have used `v0.1.18` to `v0.1.22`, you have to rename `RequestUtils.getDat
 * Added: `RequestUtils.getPromisedData`
 * Updated: core dependency to v0.1.14
 
-####Breaking Changes:
+#### Breaking Changes:
 _**Breaking Changes up to v0.1.22.  
 Solution: use v0.1.23 at least**_
 * Refactored: `RequestUtils.getData` so that `url` is first argument (again)
