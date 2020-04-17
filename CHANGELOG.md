@@ -1,6 +1,17 @@
 <img src="https://webfruits.io/assets/wf-small-toolbox-logo.svg" alt="wf core logo" height="50px">
 
 #Changelog
+## v0.2.0
+####Breaking Changes:
+* Refactored: renamed `RequestErrorInfo` into `RequestResult` in `RequestUtils` and added `responseText` as additional info to it.
+* `RequestUtils.getURL.resultListener` and `RequestUtils.getURL.errorListener` sharing both `RequestResult` as argument type
+* Please update the success result type from `any` to `RequestResult` on `getURL().resultListener` or `getPromisedData().then` and use `RequestResult.responseText` to get the content as in previous versions
+* Please update the error result type from `RequestErrorInfo` to `RequestResult` on `getURL().errorListener` or `getPromisedData().catch` 
+* Refactored: `getURL(config.usePost)` into `getURL(config.responseType: ReponseType)` which can be "GET" | "POST" | "DELETE" | "PATCH" | "PUT" | "HEAD"
+
+## v0.1.25
+* Added: error response and `RequestErrorInfo` to `RequestUtils`
+``
 
 ## v0.1.24
 * Readded: more concret error message for `RequestUtils

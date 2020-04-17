@@ -3,8 +3,6 @@
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-<<<<<<< Updated upstream
-=======
 export declare type RequestResult = {
     status: number;
     url: string;
@@ -12,7 +10,6 @@ export declare type RequestResult = {
     responseText: any;
 };
 export declare type RequestType = "GET" | "POST" | "DELETE" | "PATCH" | "PUT" | "HEAD";
->>>>>>> Stashed changes
 export declare class RequestUtils {
     static getURL(options: {
         url: string;
@@ -24,11 +21,7 @@ export declare class RequestUtils {
             value: string;
         }[];
         progressListener?: (e: ProgressEvent) => void;
-<<<<<<< Updated upstream
-        errorListener?: (error: any) => void;
-=======
         errorListener?: (error: RequestResult) => void;
->>>>>>> Stashed changes
     }): XMLHttpRequest;
     static getPromisedData(url: string, options?: {
         sendData?: any;

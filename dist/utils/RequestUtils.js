@@ -33,10 +33,6 @@ var RequestUtils = /** @class */ (function () {
             });
         }
         xmlHttpRequest.onloadend = function () {
-<<<<<<< Updated upstream
-            if (xmlHttpRequest.status !== 200) {
-                options.errorListener({ status: xmlHttpRequest.status, url: options.url });
-=======
             if (RequestUtils.isErrorStatus(xmlHttpRequest.status)) {
                 options.errorListener({
                     status: xmlHttpRequest.status,
@@ -44,7 +40,6 @@ var RequestUtils = /** @class */ (function () {
                     response: xmlHttpRequest.response,
                     responseText: xmlHttpRequest.responseText
                 });
->>>>>>> Stashed changes
             }
         };
         xmlHttpRequest.send(options && options.sendData ? options.sendData : null);
