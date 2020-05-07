@@ -76,6 +76,6 @@ export class RequestUtils {
     }
 
     static isErrorStatus(statusCode: number): boolean {
-        return statusCode >= 400 && statusCode < 500;
+        return statusCode >= 400 && statusCode < 600;
     }
 }

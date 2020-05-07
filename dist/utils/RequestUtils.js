@@ -62,7 +62,7 @@ var RequestUtils = /** @class */ (function () {
         return statusCode >= 200 && statusCode < 300;
     };
     RequestUtils.isErrorStatus = function (statusCode) {
-        return statusCode >= 400 && statusCode < 500;
+        return statusCode >= 400 && statusCode < 600;
     };
     return RequestUtils;
 }());
