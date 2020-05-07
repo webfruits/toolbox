@@ -1,6 +1,10 @@
 <img src="https://webfruits.io/assets/wf-small-toolbox-logo.svg" alt="wf core logo" height="50px">
 
 #Changelog
+
+## v0.2.1
+* Added: optional param for `URLUtils.getParams(url?: string)` to get params from an url-string
+
 ## v0.2.0
 #### Breaking Changes:
 * Refactored: renamed `RequestErrorInfo` into `RequestResult` in `RequestUtils` and added `responseText` as additional info to it.
@@ -11,11 +15,10 @@
 
 ## v0.1.25
 * Added: error response and `RequestErrorInfo` to `RequestUtils`
-``
 
 ## v0.1.25
 * Added: error response and `RequestErrorInfo` to `RequestUtils`
-``
+
 ## v0.1.24
 * Readded: more concret error message for `RequestUtils`
 
