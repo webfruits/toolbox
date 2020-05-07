@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v0.2.2
+* Fixed: increased `RequestUtils.isErrorStatus` to 500er
+
 ## v0.2.1
 * Added: optional param for `URLUtils.getParams(url?: string)` to get params from an url-string
 
