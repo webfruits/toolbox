@@ -5,7 +5,7 @@
  *****************************************************************/
 export declare class URLUtils {
     static getUrlParam(paraName: string, defaultValue?: string): string;
-    static getUrlParams(): {
+    static getUrlParams(url?: string): {
         [paraName: number]: string;
     };
     static openLink(href: string, openInNewWindow?: boolean, openAsPopup?: boolean): void;
