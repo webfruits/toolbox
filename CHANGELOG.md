@@ -3,6 +3,7 @@
 #Changelog
 
 ## v1.0.0
+* Added: `ValidationUtils` to check mail, password (configable), date, phone
 * Added: `ScrollBox` to get child scrolling with features like scrollTo, iOS-Fix or hiding scrollbar
 * Added: `NativeVideo`
 * Added: `PromisedDelay` to easily insert timeouts during methode executions
