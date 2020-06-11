@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.1
+* Fixed: package.json webfruits/core dependency
+
 ## v1.0.0
 * Added: `GradientUtils` to create smooth gradients without visible steps
 * Added: `ArrayUtils` cause of missing native array methodes
