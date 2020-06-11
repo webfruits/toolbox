@@ -23,7 +23,7 @@ export declare class WheelController {
     private _updateThresholdTimer;
     onUpSignal: Signal<void>;
     onDownSignal: Signal<void>;
-    onInteractionStartSignal: Signal<TouchEvent | MouseEvent>;
+    onInteractionStartSignal: Signal<MouseEvent | TouchEvent>;
     /******************************************************************
      * Constructor
      *****************************************************************/
