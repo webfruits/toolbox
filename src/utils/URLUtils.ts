@@ -11,9 +11,12 @@ export class URLUtils {
         return value ? value : defaultValue;
     }
 
-    static getUrlParams(): { [paraName: number]: string } {
+    static getUrlParams(url?: string): { [paraName: number]: string } {
         let vars = {};
-        location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (substring: string, ...args: any[]) => {
+        if (!url) {
+            url = location.href;
+        }
+        url.replace(/[?&]+([^=&]+)=([^&]*)/gi, (substring: string, ...args: any[]) => {
             let paraName = args[0];
             vars[paraName] = args[1];
             return substring;

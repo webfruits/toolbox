@@ -13,9 +13,12 @@ var URLUtils = /** @class */ (function () {
         var value = URLUtils.getUrlParams()[paraName];
         return value ? value : defaultValue;
     };
-    URLUtils.getUrlParams = function () {
+    URLUtils.getUrlParams = function (url) {
         var vars = {};
-        location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (substring) {
+        if (!url) {
+            url = location.href;
+        }
+        url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (substring) {
             var args = [];
             for (var _i = 1; _i < arguments.length; _i++) {
                 args[_i - 1] = arguments[_i];
