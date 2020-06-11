@@ -2,6 +2,16 @@
 
 #Changelog
 
+## v1.0.0
+* Added: `GradientUtils` to create smooth gradients without visible steps
+* Added: `ArrayUtils` cause of missing native array methodes
+* Added: `StateValue` to easily create states objects where you can listen to
+* Added: `FontDetector` to check if font via name and weight is avaiable
+* Added: `ValidationUtils` to check mail, password (configable), date, phone
+* Added: `ScrollBox` to get child scrolling with features like scrollTo, iOS-Fix or hiding scrollbar
+* Added: `NativeVideo`
+* Added: `PromisedDelay` to easily insert timeouts during methode executions
+
 ## v0.2.2
 * Fixed: increased `RequestUtils.isErrorStatus` to 500er
 
