@@ -3,6 +3,7 @@
 #Changelog
 
 ## v1.0.0
+* Added: `GradientUtils` to create smooth gradients without visible steps
 * Added: `ArrayUtils` cause of missing native array methodes
 * Added: `StateValue` to easily create states objects where you can listen to
 * Added: `FontDetector` to check if font via name and weight is avaiable
