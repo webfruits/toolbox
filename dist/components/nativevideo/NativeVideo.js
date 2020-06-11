@@ -125,6 +125,9 @@ var NativeVideo = /** @class */ (function (_super) {
             var source = new core_1.UIComponent("source");
             source.addNativeListener("error", function () { return _this.onVideoError(); });
             source.view.src = videoSource.videoURL;
+            if (videoSource.videoType) {
+                source.view.type = videoSource.videoType;
+            }
             _this._video.addChild(source);
         });
         this.addChild(this._video);

@@ -85,6 +85,9 @@ export class NativeVideo extends UIComponent {
             let source = new UIComponent<HTMLSourceElement>("source");
             source.addNativeListener("error", () => this.onVideoError());
             source.view.src = videoSource.videoURL;
+            if (videoSource.videoType) {
+                source.view.type = videoSource.videoType;
+            }
             this._video.addChild(source);
         });
         this.addChild(this._video);

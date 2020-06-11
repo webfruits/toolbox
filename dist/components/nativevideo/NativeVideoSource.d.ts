@@ -5,4 +5,5 @@
  *****************************************************************/
 export interface NativeVideoSource {
     videoURL: string;
+    videoType?: string;
 }
