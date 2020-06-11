@@ -19,7 +19,8 @@ export class NativeVideo extends UIComponent {
         muted: false,
         preload: false,
         loop: false,
-        controls: true
+        controls: true,
+        autoplay: false
     };
     private _config: NativeVideoConfig;
     private _video: UIComponent<HTMLVideoElement>;
@@ -64,16 +65,6 @@ export class NativeVideo extends UIComponent {
         })
     }
 
-    public destroy(recursivly?: boolean, recursiveDelayInMS?: number): void {
-        super.destroy(recursivly, recursiveDelayInMS);
-        this.onMetaDataSignal.removeAll();
-        this.onCompletedSignal.removeAll();
-        this.onCanPlaySignal.removeAll();
-        this.onStopSignal.removeAll();
-        this.onTimeUpdateSignal.removeAll();
-        this.onErrorSignal.removeAll();
-    }
-
     /******************************************************************
      * Private Methodes
      *****************************************************************/
@@ -85,6 +76,7 @@ export class NativeVideo extends UIComponent {
         this._video.view.preload = this._config.preload ? "auto" : "none";
         this._video.view.loop = this._config.loop;
         this._video.view.controls = this._config.controls;
+        this._video.view.autoplay = this._config.autoplay;
         this._video.addNativeListener("loadedmetadata", () => this.onMetaData());
         this._video.addNativeListener("canplay", () => this.onVideoCanPlay());
         this._video.addNativeListener("ended", () => this.onVideoComplete());

@@ -32,7 +32,6 @@ export declare class NativeVideo extends UIComponent {
     play(): Promise<void>;
     stop(): void;
     updateStyles(): void;
-    destroy(recursivly?: boolean, recursiveDelayInMS?: number): void;
     /******************************************************************
      * Private Methodes
      *****************************************************************/

@@ -9,4 +9,5 @@ export interface NativeVideoConfig {
     preload?: boolean;
     loop?: boolean;
     controls?: boolean;
+    autoplay?: boolean;
 }

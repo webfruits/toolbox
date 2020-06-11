@@ -105,15 +105,6 @@ var NativeVideo = /** @class */ (function (_super) {
             height: "100%"
         });
     };
-    NativeVideo.prototype.destroy = function (recursivly, recursiveDelayInMS) {
-        _super.prototype.destroy.call(this, recursivly, recursiveDelayInMS);
-        this.onMetaDataSignal.removeAll();
-        this.onCompletedSignal.removeAll();
-        this.onCanPlaySignal.removeAll();
-        this.onStopSignal.removeAll();
-        this.onTimeUpdateSignal.removeAll();
-        this.onErrorSignal.removeAll();
-    };
     /******************************************************************
      * Private Methodes
      *****************************************************************/
@@ -125,6 +116,7 @@ var NativeVideo = /** @class */ (function (_super) {
         this._video.view.preload = this._config.preload ? "auto" : "none";
         this._video.view.loop = this._config.loop;
         this._video.view.controls = this._config.controls;
+        this._video.view.autoplay = this._config.autoplay;
         this._video.addNativeListener("loadedmetadata", function () { return _this.onMetaData(); });
         this._video.addNativeListener("canplay", function () { return _this.onVideoCanPlay(); });
         this._video.addNativeListener("ended", function () { return _this.onVideoComplete(); });
@@ -162,7 +154,8 @@ var NativeVideo = /** @class */ (function (_super) {
         muted: false,
         preload: false,
         loop: false,
-        controls: true
+        controls: true,
+        autoplay: false
     };
     return NativeVideo;
 }(core_1.UIComponent));
