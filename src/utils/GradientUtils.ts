@@ -19,7 +19,7 @@ export class GradientUtils {
         const resolution = config?.resolution ?? 12;
         const color = config?.color ?? 0xFFFFFF;
         const startProgress = config?.start ?? 0;
-        const endProgress = config?.end ?? 0;
+        const endProgress = config?.end ?? 1;
         const progressLength = endProgress - startProgress;
         const cssColor = ColorUtils.convertColorFromHexToCSS(color);
         let gradient = "";

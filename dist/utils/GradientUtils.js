@@ -15,7 +15,7 @@ var GradientUtils = /** @class */ (function () {
         var resolution = (_d = (_c = config) === null || _c === void 0 ? void 0 : _c.resolution, (_d !== null && _d !== void 0 ? _d : 12));
         var color = (_f = (_e = config) === null || _e === void 0 ? void 0 : _e.color, (_f !== null && _f !== void 0 ? _f : 0xFFFFFF));
         var startProgress = (_h = (_g = config) === null || _g === void 0 ? void 0 : _g.start, (_h !== null && _h !== void 0 ? _h : 0));
-        var endProgress = (_k = (_j = config) === null || _j === void 0 ? void 0 : _j.end, (_k !== null && _k !== void 0 ? _k : 0));
+        var endProgress = (_k = (_j = config) === null || _j === void 0 ? void 0 : _j.end, (_k !== null && _k !== void 0 ? _k : 1));
         var progressLength = endProgress - startProgress;
         var cssColor = ColorUtils_1.ColorUtils.convertColorFromHexToCSS(color);
         var gradient = "";
