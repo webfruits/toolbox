@@ -26,7 +26,6 @@ export class GradientUtils {
         for (let i = 0; i <= resolution; i++) {
             const progress = i / resolution;
             const position = ((progress * 100) * progressLength + startProgress * 100) + "%";
-            console.log(position);
             const easedAlpha = -(Math.cos(Math.PI * progress) - 1) / 2;
             gradient += ColorUtils.addAlphaToCSS(cssColor, easedAlpha) + " " + position + ",";
         }
