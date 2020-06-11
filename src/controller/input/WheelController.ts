@@ -1,6 +1,6 @@
 import {ProgressTimer} from "../../timer/ProgressTimer";
 import {NativeEventsController} from "@webfruits/core/dist/controller/NativeEventsController";
-import {Signal} from "@webfruits/core/dist/signal/Signal";
+import { Signal } from "@webfruits/core/dist/signal/Signal";
 
 /******************************************************************
  * WheelController

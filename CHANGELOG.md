@@ -3,6 +3,7 @@
 #Changelog
 
 ## v1.0.0
+* Added: `NativeVideo`
 * Added: `PromisedDelay` to easily insert timeouts during methode executions
 
 ## v0.2.2
