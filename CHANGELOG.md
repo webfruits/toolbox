@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.0
+* Added: `PromisedDelay` to easily insert timeouts during methode executions
+
 ## v0.2.2
 * Fixed: increased `RequestUtils.isErrorStatus` to 500er
 
