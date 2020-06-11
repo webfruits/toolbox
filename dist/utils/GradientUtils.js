@@ -9,7 +9,7 @@ var ColorUtils_1 = require("@webfruits/core/dist/utils/ColorUtils");
 var GradientUtils = /** @class */ (function () {
     function GradientUtils() {
     }
-    GradientUtils.createSmoothGradient = function (config) {
+    GradientUtils.createAlphaToColorSmoothGradient = function (config) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         var degree = (_b = (_a = config) === null || _a === void 0 ? void 0 : _a.degree, (_b !== null && _b !== void 0 ? _b : 180));
         var resolution = (_d = (_c = config) === null || _c === void 0 ? void 0 : _c.resolution, (_d !== null && _d !== void 0 ? _d : 12));

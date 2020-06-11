@@ -4,7 +4,7 @@
  * @author matthias.schulz@jash.de
  *****************************************************************/
 export declare class GradientUtils {
-    static createSmoothGradient(config?: {
+    static createAlphaToColorSmoothGradient(config?: {
         color?: number;
         resolution?: number;
         degree?: number;

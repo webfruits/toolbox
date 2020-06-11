@@ -8,7 +8,7 @@ import {ColorUtils} from "@webfruits/core/dist/utils/ColorUtils";
 
 export class GradientUtils {
 
-    static createSmoothGradient(config?: {
+    static createAlphaToColorSmoothGradient(config?: {
         color?: number,
         resolution?: number,
         degree?: number,
