@@ -2,6 +2,10 @@
 
 #Changelog
 
+## v1.0.2
+* Update: package.json webfruits/core version to v1.0.1
+* Fixed: SwipeController not resetting when onTouchEnd not dispatchable anymore
+
 ## v1.0.1
 * Fixed: package.json webfruits/core dependency
 
