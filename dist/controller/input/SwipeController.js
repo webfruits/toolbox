@@ -106,6 +106,8 @@ var SwipeController = /** @class */ (function () {
         if (!this._enabled)
             return;
         this._preventSwiping = false;
+        this._swipeTriggered = false;
+        this._swipeDetecting = false;
         this._touchStartX = e.touches[0].clientX;
         this._touchStartY = e.touches[0].clientY;
     };
