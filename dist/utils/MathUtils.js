@@ -15,6 +15,13 @@ var MathUtils = /** @class */ (function () {
     MathUtils.degToRad = function (degrees) {
         return degrees * Math.PI / 180;
     };
+    MathUtils.roundToEven = function (value) {
+        if (value === null)
+            return null;
+        if (value === undefined)
+            return undefined;
+        return 2 * Math.round(value / 2);
+    };
     MathUtils.polarToCartesian = function (centerX, centerY, radius, angleInDegrees) {
         var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
         return {
