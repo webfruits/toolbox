@@ -1,6 +1,6 @@
 {
   "name": "@webfruits/toolbox",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Additional features like SVGComponent, GridLayout and a lot of utilities based on webfruits/core",
   "homepage": "https://webfruits.io",
   "license": "MIT License",
@@ -24,7 +24,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@webfruits/core": "^1.0.1"
+    "@webfruits/core": "^1.0.2"
   },
   "keywords": [
     "frontend",

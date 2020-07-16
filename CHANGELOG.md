@@ -2,6 +2,12 @@
 
 #Changelog
 
+## v1.0.3
+* Added: `DOMUtils.isTextInputElementActive`
+* Added: `DateUtils` with methodes like `getFormattedDayTime`, `isToday`, `isTomorrow`, `isSameDay`, `isYesterday`, `isWithinLastDays`)
+* Added: `MathUtils.roundToEven`
+* Update: package.json webfruits/core version to v1.0.2
+
 ## v1.0.2
 * Update: package.json webfruits/core version to v1.0.1
 * Fixed: SwipeController not resetting when onTouchEnd not dispatchable anymore

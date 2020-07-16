@@ -15,6 +15,12 @@ export class MathUtils {
         return degrees * Math.PI / 180;
     }
 
+    static roundToEven(value: number): number {
+        if (value === null) return null;
+        if (value === undefined) return undefined;
+        return 2 * Math.round(value / 2);
+    }
+
     static polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number) {
         let angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
         return {

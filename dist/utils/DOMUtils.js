@@ -26,6 +26,11 @@ var DOMUtils = /** @class */ (function () {
             return defaultValue;
         }
     };
+    DOMUtils.isTextInputElementActive = function () {
+        var isContentEditable = document.activeElement.getAttribute("contentEditable") == "true";
+        var isTextInput = !!document.activeElement.getAttribute("type");
+        return isContentEditable || isTextInput;
+    };
     return DOMUtils;
 }());
 exports.DOMUtils = DOMUtils;

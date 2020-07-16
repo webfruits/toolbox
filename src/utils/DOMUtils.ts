@@ -25,4 +25,11 @@ export class DOMUtils {
             return defaultValue;
         }
     }
+
+    static isTextInputElementActive(): boolean {
+        const isContentEditable = document.activeElement.getAttribute("contentEditable") == "true";
+        const isTextInput = !!document.activeElement.getAttribute("type");
+        return isContentEditable || isTextInput;
+    }
+
 }
