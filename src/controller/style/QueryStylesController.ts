@@ -1,4 +1,5 @@
 import { NativeStylesController } from "@webfruits/core/dist/controller/NativeStylesController";
+import { INativeStyleDeclaration } from "@webfruits/core/dist/interface/INativeStyleDeclaration";
 
 /******************************************************************
  * QueryStylesController
@@ -25,11 +26,11 @@ export class QueryStylesController {
      * Public Methodes
      *****************************************************************/
 
-    public to(querySelector: string, cssStyle: CSSStyleDeclaration | any) {
+    public to(querySelector: string, cssStyle: INativeStyleDeclaration, priorityLevel?: number) {
         let elements = this._scopeElement.querySelectorAll(querySelector);
         if (elements) {
             elements.forEach((element: HTMLElement) => {
-                this.getNativeStylesController(element).applyStyle(cssStyle);
+                this.getNativeStylesController(element).applyStyle(cssStyle, priorityLevel);
             });
         }
     }
