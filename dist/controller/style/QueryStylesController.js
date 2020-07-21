@@ -20,12 +20,12 @@ var QueryStylesController = /** @class */ (function () {
     /******************************************************************
      * Public Methodes
      *****************************************************************/
-    QueryStylesController.prototype.to = function (querySelector, cssStyle) {
+    QueryStylesController.prototype.to = function (querySelector, cssStyle, priorityLevel) {
         var _this = this;
         var elements = this._scopeElement.querySelectorAll(querySelector);
         if (elements) {
             elements.forEach(function (element) {
-                _this.getNativeStylesController(element).applyStyle(cssStyle);
+                _this.getNativeStylesController(element).applyStyle(cssStyle, priorityLevel);
             });
         }
     };

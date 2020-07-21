@@ -1,3 +1,4 @@
+import { INativeStyleDeclaration } from "@webfruits/core/dist/interface/INativeStyleDeclaration";
 /******************************************************************
  * QueryStylesController
  *
@@ -16,7 +17,7 @@ export declare class QueryStylesController {
     /******************************************************************
      * Public Methodes
      *****************************************************************/
-    to(querySelector: string, cssStyle: CSSStyleDeclaration | any): void;
+    to(querySelector: string, cssStyle: INativeStyleDeclaration, priorityLevel?: number): void;
     destroy(): void;
     /******************************************************************
      * Private Methodes
