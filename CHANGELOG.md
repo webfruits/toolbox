@@ -2,6 +2,11 @@
 
 #Changelog
 
+## v1.0.4
+* Added: QueryStylesController.to() now supports priorityLevel
+* Fixed: QueryStylesController.to() to make use of INativeStyleDeclaration
+* Update: package.json webfruits/core version to v1.0.3
+
 ## v1.0.3
 * Added: `DOMUtils.isTextInputElementActive`
 * Added: `DateUtils` with methodes like `getFormattedDayTime`, `isToday`, `isTomorrow`, `isSameDay`, `isYesterday`, `isWithinLastDays`)
