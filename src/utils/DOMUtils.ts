@@ -29,7 +29,8 @@ export class DOMUtils {
     static isTextInputElementActive(): boolean {
         const isContentEditable = document.activeElement.getAttribute("contentEditable") == "true";
         const isTextInput = !!document.activeElement.getAttribute("type");
-        return isContentEditable || isTextInput;
+        const isTextArea = document.activeElement instanceof HTMLTextAreaElement;
+        return isContentEditable || isTextInput || isTextArea;
     }
 
 }
