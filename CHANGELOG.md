@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.5
+* Fixed: added TextArea check for DOMUtils.isTextInputElementActive()
+
 ## v1.0.4
 * Added: QueryStylesController.to() now supports priorityLevel
 * Fixed: QueryStylesController.to() to make use of INativeStyleDeclaration
