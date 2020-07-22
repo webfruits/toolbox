@@ -29,7 +29,8 @@ var DOMUtils = /** @class */ (function () {
     DOMUtils.isTextInputElementActive = function () {
         var isContentEditable = document.activeElement.getAttribute("contentEditable") == "true";
         var isTextInput = !!document.activeElement.getAttribute("type");
-        return isContentEditable || isTextInput;
+        var isTextArea = document.activeElement instanceof HTMLTextAreaElement;
+        return isContentEditable || isTextInput || isTextArea;
     };
     return DOMUtils;
 }());
