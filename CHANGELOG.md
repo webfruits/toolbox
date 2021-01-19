@@ -2,12 +2,15 @@
 
 #Changelog
 
+## v1.0.6
+* Fixed: `RequestUtils.getPromisedData` missing "?" for default requestType
+
 ## v1.0.5
-* Fixed: added TextArea check for DOMUtils.isTextInputElementActive()
+* Fixed: added TextArea check for `DOMUtils.isTextInputElementActive()`
 
 ## v1.0.4
-* Added: QueryStylesController.to() now supports priorityLevel
-* Fixed: QueryStylesController.to() to make use of INativeStyleDeclaration
+* Added: `QueryStylesController.to()` now supports priorityLevel
+* Fixed: `QueryStylesController.to()` to make use of INativeStyleDeclaration
 * Update: package.json webfruits/core version to v1.0.3
 
 ## v1.0.3
