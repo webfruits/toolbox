@@ -63,7 +63,7 @@ export class RequestUtils {
             RequestUtils.getURL({
                 url: url,
                 sendData: options?.sendData ?? undefined,
-                requestType: options.requestType ?? "GET",
+                requestType: options?.requestType ?? "GET",
                 requestHeaders: options?.requestHeaders ?? undefined,
                 resultListener: (result: RequestResult) => resolve(result),
                 errorListener: (error: RequestResult) => reject(error)
