@@ -32,6 +32,25 @@ var DOMUtils = /** @class */ (function () {
         var isTextArea = document.activeElement instanceof HTMLTextAreaElement;
         return isContentEditable || isTextInput || isTextArea;
     };
+    // inspired by https://stackoverflow.com/questions/10787782/full-height-of-a-html-element-div-including-border-padding-and-margin
+    DOMUtils.calcElementHeight = function (element) {
+        if (!element) {
+            return 0;
+        }
+        var heightRelatedProperties = [
+            'margin-top',
+            'margin-bottom',
+            'border-top',
+            'border-bottom',
+            'padding-top',
+            'padding-bottom',
+            'height'
+        ];
+        var style = window.getComputedStyle(element);
+        return heightRelatedProperties
+            .map(function (k) { return parseInt(style.getPropertyValue(k), 10); })
+            .reduce(function (prev, cur) { return prev + cur; });
+    };
     return DOMUtils;
 }());
 exports.DOMUtils = DOMUtils;

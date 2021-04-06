@@ -34,6 +34,9 @@ var StateValue = /** @class */ (function () {
     StateValue.prototype.hasValue = function () {
         return !(this._value === null || this._value === undefined);
     };
+    StateValue.prototype.isValue = function (value) {
+        return this._value === value;
+    };
     StateValue.prototype.reset = function () {
         this.setValue(this._defaultValue);
     };
