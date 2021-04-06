@@ -42,6 +42,10 @@ export class StateValue<T> {
         return !(this._value === null || this._value === undefined);
     }
 
+    public isValue(value: T): boolean {
+        return this._value === value;
+    }
+
     public reset() {
         this.setValue(this._defaultValue);
     }
