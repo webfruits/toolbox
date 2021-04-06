@@ -13,6 +13,20 @@ var PromisedDelay = /** @class */ (function () {
             setTimeout(function () { return resolve(); }, timeInSec * 1000);
         });
     };
+    PromisedDelay.waitUntilValid = function (validationMethode) {
+        return new Promise(function (resolve) {
+            checkNow();
+            function checkNow() {
+                if (validationMethode()) {
+                    resolve();
+                    return;
+                }
+                requestAnimationFrame(function () {
+                    checkNow();
+                });
+            }
+        });
+    };
     return PromisedDelay;
 }());
 exports.PromisedDelay = PromisedDelay;

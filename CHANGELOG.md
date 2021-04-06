@@ -2,6 +2,13 @@
 
 #Changelog
 
+## v1.0.7
+* Added: `TextField` get an easy and better semantic to create text specific components
+* Added: `JSONUtils` with many helper functions to get and check json values
+* Added: `DOMUtils.calcElementHeight` to get computed element height with margin, padding and border
+* Added: `PromisedDelay.waitUntilValid` waits until a validationMethode returns true
+* Added: `StateValue.isValue` to easily check state values 
+
 ## v1.0.6
 * Fixed: `RequestUtils.getPromisedData` missing "?" for default requestType
 

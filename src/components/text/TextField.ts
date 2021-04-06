@@ -1,53 +1,50 @@
-import {Signal} from "@webfruits/core/dist/signal/Signal";
+import {INativeStyleDeclaration} from "@webfruits/core/dist/interface/INativeStyleDeclaration";
+import {UIComponent} from "@webfruits/core";
 
 /******************************************************************
- * StateValue
+ * TextField
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
 
-export class StateValue<T> {
+export class TextField extends UIComponent {
 
     /******************************************************************
      * Properties
      *****************************************************************/
 
-    private _value: T;
-    public onChangeSignal = new Signal();
+    // no properties yet
 
     /******************************************************************
      * Constructor
      *****************************************************************/
 
-    constructor(private _defaultValue: T = undefined) {
-        this._value = this._defaultValue;
+    constructor(private _config: {
+        fontStyle: () => INativeStyleDeclaration,
+        html?: string,
+        name?: string
+    }) {
+        super(_config.name ?? "text-field");
+        if (this._config.html) {
+            this.html = this._config.html
+        }
     }
 
     /******************************************************************
      * Public Methodes
      *****************************************************************/
 
-    public getValue(): T {
-        return this._value;
+    get html(): string {
+        return this.view.innerText;
     }
 
-    public setValue(value: T, skipChangeSignal: boolean = false) {
-        if (value === this._value) return;
-        this._value = value;
-        if (skipChangeSignal) return;
-        this.onChangeSignal.dispatch();
+    set html(value: string) {
+        this.view.innerHTML = value;
+        this.updateStyles();
     }
 
-    public hasValue(): boolean {
-        return !(this._value === null || this._value === undefined);
-    }
-
-    public isValue(value: T): boolean {
-        return this._value === value;
-    }
-
-    public reset() {
-        this.setValue(this._defaultValue);
+    public updateStyles() {
+        this.applyStyle(this._config.fontStyle());
     }
 
     /******************************************************************

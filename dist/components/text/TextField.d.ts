@@ -1,26 +1,27 @@
-import { Signal } from "@webfruits/core/dist/signal/Signal";
+import { INativeStyleDeclaration } from "@webfruits/core/dist/interface/INativeStyleDeclaration";
+import { UIComponent } from "@webfruits/core";
 /******************************************************************
- * StateValue
+ * TextField
  *
  * @author matthias.schulz@jash.de
  *****************************************************************/
-export declare class StateValue<T> {
-    private _defaultValue;
+export declare class TextField extends UIComponent {
+    private _config;
     /******************************************************************
      * Properties
      *****************************************************************/
-    private _value;
-    onChangeSignal: Signal<void>;
     /******************************************************************
      * Constructor
      *****************************************************************/
-    constructor(_defaultValue?: T);
+    constructor(_config: {
+        fontStyle: () => INativeStyleDeclaration;
+        html?: string;
+        name?: string;
+    });
     /******************************************************************
      * Public Methodes
      *****************************************************************/
-    getValue(): T;
-    setValue(value: T, skipChangeSignal?: boolean): void;
-    hasValue(): boolean;
-    isValue(value: T): boolean;
-    reset(): void;
+    get html(): string;
+    set html(value: string);
+    updateStyles(): void;
 }
