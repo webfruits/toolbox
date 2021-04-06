@@ -12,4 +12,19 @@ export class PromisedDelay {
         });
     }
 
+    static waitUntilValid(validationMethode: () => boolean): Promise<void> {
+        return new Promise<void>((resolve: () => void) => {
+            checkNow();
+            function checkNow() {
+                if (validationMethode()) {
+                    resolve();
+                    return;
+                }
+                requestAnimationFrame(() => {
+                    checkNow();
+                })
+            }
+        });
+    }
+
 }
