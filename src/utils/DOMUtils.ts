@@ -33,4 +33,24 @@ export class DOMUtils {
         return isContentEditable || isTextInput || isTextArea;
     }
 
+    // inspired by https://stackoverflow.com/questions/10787782/full-height-of-a-html-element-div-including-border-padding-and-margin
+    static calcElementHeight(element: HTMLElement) {
+        if (!element) {
+            return 0;
+        }
+        const heightRelatedProperties = [
+            'margin-top',
+            'margin-bottom',
+            'border-top',
+            'border-bottom',
+            'padding-top',
+            'padding-bottom',
+            'height'
+        ]
+        const style = window.getComputedStyle(element)
+        return heightRelatedProperties
+            .map(k => parseInt(style.getPropertyValue(k), 10))
+            .reduce((prev, cur) => prev + cur)
+    }
+
 }
