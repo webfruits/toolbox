@@ -48,7 +48,13 @@ var DOMUtils = /** @class */ (function () {
         ];
         var style = window.getComputedStyle(element);
         return heightRelatedProperties
-            .map(function (k) { return parseInt(style.getPropertyValue(k), 10); })
+            .map(function (property) {
+            var value = parseInt(style.getPropertyValue(property), 10);
+            if (!value || isNaN(value)) {
+                value = 0;
+            }
+            return value;
+        })
             .reduce(function (prev, cur) { return prev + cur; });
     };
     return DOMUtils;
