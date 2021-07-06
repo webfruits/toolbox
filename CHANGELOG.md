@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.8
+* Fixed: `DOMUtils.calcElementHeight` returns NaN at Firefox on undefined css properties
+
 ## v1.0.7
 * Added: `TextField` get an easy and better semantic to create text specific components
 * Added: `JSONUtils` with many helper functions to get and check json values

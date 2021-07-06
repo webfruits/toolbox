@@ -49,7 +49,13 @@ export class DOMUtils {
         ]
         const style = window.getComputedStyle(element)
         return heightRelatedProperties
-            .map(k => parseInt(style.getPropertyValue(k), 10))
+            .map(property => {
+                let value = parseInt(style.getPropertyValue(property), 10)
+                if (!value || isNaN(value)) {
+                    value = 0;
+                }
+                return value;
+            })
             .reduce((prev, cur) => prev + cur)
     }
 
