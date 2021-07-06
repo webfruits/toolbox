@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.9
+* Added: `SVGComponent.svgRoot` getter
+
 ## v1.0.8
 * Fixed: `DOMUtils.calcElementHeight` returns NaN at Firefox on undefined css properties
 

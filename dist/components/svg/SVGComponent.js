@@ -38,10 +38,17 @@ var SVGComponent = /** @class */ (function (_super) {
         }
         return _this;
     }
-    Object.defineProperty(SVGComponent.prototype, "defaultWidth", {
+    Object.defineProperty(SVGComponent.prototype, "svgRoot", {
         /******************************************************************
          * Public Methodes
          *****************************************************************/
+        get: function () {
+            return this._svgRoot;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SVGComponent.prototype, "defaultWidth", {
         get: function () {
             return parseFloat(this._viewBoxAttr.split(" ")[2]);
         },

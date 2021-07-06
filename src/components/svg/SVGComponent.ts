@@ -37,6 +37,10 @@ export class SVGComponent extends UIComponent {
      * Public Methodes
      *****************************************************************/
 
+    get svgRoot(): SVGElement {
+        return this._svgRoot;
+    }
+
     get defaultWidth(): number {
         return parseFloat(this._viewBoxAttr.split(" ")[2]);
     }
