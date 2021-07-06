@@ -17,6 +17,7 @@ export declare class SVGComponent extends UIComponent {
     /******************************************************************
      * Public Methodes
      *****************************************************************/
+    get svgRoot(): SVGElement;
     get defaultWidth(): number;
     get defaultHeight(): number;
     set width(value: number);
