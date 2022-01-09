@@ -57,6 +57,10 @@ export class StateValue<T> {
         return this._value === value;
     }
 
+    public isPreviousValue(value: T): boolean {
+        return this._prevValue === value;
+    }
+
     public reset(resetPreviousValue: boolean = true) {
         if (resetPreviousValue) {
             this._value = undefined;
