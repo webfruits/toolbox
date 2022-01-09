@@ -45,6 +45,9 @@ var StateValue = /** @class */ (function () {
     StateValue.prototype.isValue = function (value) {
         return this._value === value;
     };
+    StateValue.prototype.isPreviousValue = function (value) {
+        return this._prevValue === value;
+    };
     StateValue.prototype.reset = function (resetPreviousValue) {
         if (resetPreviousValue === void 0) { resetPreviousValue = true; }
         if (resetPreviousValue) {

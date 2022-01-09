@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.11
+* Added: `StateValue.isPreviousValue(value)`
+
 ## v1.0.10
 * Added: `StateValue.getPreviousValue()` and `StateValue.getDefaultValue()`
 

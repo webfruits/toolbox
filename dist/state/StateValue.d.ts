@@ -25,5 +25,6 @@ export declare class StateValue<T> {
     setValue(value: T, skipChangeSignal?: boolean): void;
     hasValue(): boolean;
     isValue(value: T): boolean;
+    isPreviousValue(value: T): boolean;
     reset(resetPreviousValue?: boolean): void;
 }
