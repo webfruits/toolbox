@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.10
+* Added: `StateValue.getPreviousValue()` and `StateValue.getDefaultValue()`
+
 ## v1.0.9
 * Added: `SVGComponent.svgRoot` getter
 
