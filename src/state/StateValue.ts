@@ -13,6 +13,7 @@ export class StateValue<T> {
      *****************************************************************/
 
     private _value: T;
+    private _prevValue: T = undefined;
     public onChangeSignal = new Signal();
 
     /******************************************************************
@@ -31,11 +32,21 @@ export class StateValue<T> {
         return this._value;
     }
 
+    public getPreviousValue(): T {
+        return this._prevValue;
+    }
+
+    public getDefaultValue(): T {
+        return this._defaultValue;
+    }
+
     public setValue(value: T, skipChangeSignal: boolean = false) {
         if (value === this._value) return;
+        this._prevValue = this._value;
         this._value = value;
         if (skipChangeSignal) return;
         this.onChangeSignal.dispatch();
+
     }
 
     public hasValue(): boolean {
@@ -46,7 +57,11 @@ export class StateValue<T> {
         return this._value === value;
     }
 
-    public reset() {
+    public reset(resetPreviousValue: boolean = true) {
+        if (resetPreviousValue) {
+            this._value = undefined;
+            this._prevValue = undefined;
+        }
         this.setValue(this._defaultValue);
     }
 

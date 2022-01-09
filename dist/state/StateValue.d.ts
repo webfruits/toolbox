@@ -10,6 +10,7 @@ export declare class StateValue<T> {
      * Properties
      *****************************************************************/
     private _value;
+    private _prevValue;
     onChangeSignal: Signal<void>;
     /******************************************************************
      * Constructor
@@ -19,8 +20,10 @@ export declare class StateValue<T> {
      * Public Methodes
      *****************************************************************/
     getValue(): T;
+    getPreviousValue(): T;
+    getDefaultValue(): T;
     setValue(value: T, skipChangeSignal?: boolean): void;
     hasValue(): boolean;
     isValue(value: T): boolean;
-    reset(): void;
+    reset(resetPreviousValue?: boolean): void;
 }
