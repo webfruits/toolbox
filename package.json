@@ -1,6 +1,6 @@
 {
   "name": "@webfruits/toolbox",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Additional features like SVGComponent, GridLayout and a lot of utilities based on webfruits/core",
   "homepage": "https://webfruits.io",
   "license": "MIT License",
