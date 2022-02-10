@@ -8,5 +8,6 @@ export declare class DOMUtils {
     static getElementIndex(element: HTMLElement): number;
     static getDatasetValue<T>(element: HTMLElement, datasetName: string, defaultValue: T): T;
     static isTextInputElementActive(): boolean;
+    static calcElementWidth(element: HTMLElement): number;
     static calcElementHeight(element: HTMLElement): number;
 }

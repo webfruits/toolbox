@@ -33,6 +33,30 @@ var DOMUtils = /** @class */ (function () {
         return isContentEditable || isTextInput || isTextArea;
     };
     // inspired by https://stackoverflow.com/questions/10787782/full-height-of-a-html-element-div-including-border-padding-and-margin
+    DOMUtils.calcElementWidth = function (element) {
+        if (!element) {
+            return 0;
+        }
+        var widthRelatedProperties = [
+            'margin-left',
+            'margin-right',
+            'border-left',
+            'border-right',
+            'padding-left',
+            'padding-right',
+            'width'
+        ];
+        var style = window.getComputedStyle(element);
+        return widthRelatedProperties
+            .map(function (property) {
+            var value = parseInt(style.getPropertyValue(property), 10);
+            if (!value || isNaN(value)) {
+                value = 0;
+            }
+            return value;
+        })
+            .reduce(function (prev, cur) { return prev + cur; });
+    };
     DOMUtils.calcElementHeight = function (element) {
         if (!element) {
             return 0;
