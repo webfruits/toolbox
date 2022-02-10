@@ -2,6 +2,9 @@
 
 #Changelog
 
+## v1.0.12
+* Added: `DOMUtils.calcElementWidth(element)`
+
 ## v1.0.11
 * Added: `StateValue.isPreviousValue(value)`
 
