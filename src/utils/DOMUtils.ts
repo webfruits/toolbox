@@ -34,6 +34,31 @@ export class DOMUtils {
     }
 
     // inspired by https://stackoverflow.com/questions/10787782/full-height-of-a-html-element-div-including-border-padding-and-margin
+    static calcElementWidth(element: HTMLElement) {
+        if (!element) {
+            return 0;
+        }
+        const widthRelatedProperties = [
+            'margin-left',
+            'margin-right',
+            'border-left',
+            'border-right',
+            'padding-left',
+            'padding-right',
+            'width'
+        ]
+        const style = window.getComputedStyle(element)
+        return widthRelatedProperties
+            .map(property => {
+                let value = parseInt(style.getPropertyValue(property), 10)
+                if (!value || isNaN(value)) {
+                    value = 0;
+                }
+                return value;
+            })
+            .reduce((prev, cur) => prev + cur)
+    }
+
     static calcElementHeight(element: HTMLElement) {
         if (!element) {
             return 0;
