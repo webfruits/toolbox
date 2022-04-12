@@ -8,6 +8,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DOMUtils = /** @class */ (function () {
     function DOMUtils() {
     }
+    DOMUtils.disablePageScrolling = function () {
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+    };
+    DOMUtils.enablePageScrolling = function () {
+        document.body.style.overflow = null;
+        document.documentElement.style.overflow = null;
+    };
     DOMUtils.getArrayFrom = function (htmlCollection) {
         if (Array.from) {
             return Array.from(htmlCollection);

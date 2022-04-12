@@ -2,6 +2,10 @@
 
 #Changelog
 
+## v1.0.13
+* Added: `DOMUtils.enablePageScrolling
+* Added: `DOMUtils.disablePageScrolling
+
 ## v1.0.12
 * Added: `DOMUtils.calcElementWidth(element)`
 
