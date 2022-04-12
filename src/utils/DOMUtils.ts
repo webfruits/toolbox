@@ -6,6 +6,16 @@
 
 export class DOMUtils {
 
+    static disablePageScrolling() {
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden"
+    }
+
+    static enablePageScrolling() {
+        document.body.style.overflow = null;
+        document.documentElement.style.overflow = null
+    }
+
     static getArrayFrom(htmlCollection: HTMLCollection): Element[] {
         if (Array.from) {
             return Array.from(htmlCollection);
