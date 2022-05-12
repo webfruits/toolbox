@@ -16,14 +16,17 @@ export class SwipeController {
     private _touchStartX: number;
     private _touchStartY: number;
     private _mouseStartX: number;
+    private _mouseStartY: number;
     private _enabled: boolean = true;
     private _isMouseDown: boolean;
-    private _preventSwiping: boolean;
+    private _preventSwipeDispatch: boolean;
     private _isSwiping: boolean;
     private _swipeDetecting: boolean;
     private _swipeTriggered: boolean;
+    private _useTouchOnly: boolean = false;
 
-    private _swipeDetectThreshold = 30;
+    private _swipeDetectThresholdX = 30;
+    private _swipeDetectThresholdY = 30;
 
     private _elementEvents: NativeEventsController;
 
@@ -31,6 +34,9 @@ export class SwipeController {
     public onRightSwipeSignal = new Signal();
     public onSwipeEndSignal = new Signal();
     public onSwipeStartSignal = new Signal();
+    public onSwipingSignal = new Signal<{dx: number, dy: number}>()
+    public onDownSwipeSignal = new Signal();
+    public onUpSwipeSignal = new Signal();
 
     /******************************************************************
      * Constructor
@@ -52,17 +58,30 @@ export class SwipeController {
         this._enabled = value;
     }
 
+    set useTouchOnly(value: boolean) {
+        this._useTouchOnly = value;
+    }
+
     get isSwiping(): boolean {
         return this._isSwiping;
     }
 
-    get swipeDetectThreshold(): number {
-        return this._swipeDetectThreshold;
+    get swipeDetectThresholdX(): number {
+        return this._swipeDetectThresholdX;
     }
 
-    set swipeDetectThreshold(value: number) {
-        if (value < 20) value = 20;
-        this._swipeDetectThreshold = value;
+    set swipeDetectThresholdX(value: number) {
+        if (value < 11) value = 11;
+        this._swipeDetectThresholdX = value;
+    }
+
+    get swipeDetectThresholdY(): number {
+        return this._swipeDetectThresholdY;
+    }
+
+    set swipeDetectThresholdY(value: number) {
+        if (value < 11) value = 11;
+        this._swipeDetectThresholdY = value;
     }
 
     public destroy() {
@@ -80,24 +99,31 @@ export class SwipeController {
 
     private initListeners() {
         this._elementEvents = new NativeEventsController(this._element);
-        this._elementEvents.addListener("touchstart", (e: TouchEvent) => this.onTouchStarted(e));
-        this._elementEvents.addListener("touchmove", (e: TouchEvent) => this.onTouchMove(e));
+        this._elementEvents.addListener("touchstart", (e: TouchEvent) => this.onTouchStarted(e), {passive:false});
+        this._elementEvents.addListener("touchmove", (e: TouchEvent) => this.onTouchMove(e),  {passive:false});
         this._elementEvents.addListener("touchend", () => this.onTouchEnd());
         this._elementEvents.addListener("mousedown", (e: MouseEvent) => this.onMouseDown(e));
         this._elementEvents.addListener("mousemove", (e: MouseEvent) => this.onMouseMove(e));
         this._elementEvents.addListener("mouseup", () => this.onMouseUp());
     }
 
-    private checkForSwipe(dx: number) {
-        if (this._swipeTriggered) return;
-        if (Math.abs(dx) > 20) {
+    private checkForSwipe(dx: number, dy: number) {
+        if (this._swipeTriggered || this._preventSwipeDispatch) return;
+        if (Math.abs(dx) >= 11 || Math.abs(dy) >= 11 ) {
             this._swipeDetecting = true;
-            if (dx > this._swipeDetectThreshold) {
+            this.onSwipingSignal.dispatch({dx: dx, dy: dy});
+            if (dx > this._swipeDetectThresholdX) {
                 this._swipeTriggered = true;
                 this.onRightSwipeSignal.dispatch();
-            } else if (dx < -this._swipeDetectThreshold) {
+            } else if (dx < -this._swipeDetectThresholdX) {
                 this._swipeTriggered = true;
                 this.onLeftSwipeSignal.dispatch();
+            } else if (dy > this._swipeDetectThresholdY) {
+                this._swipeTriggered = true;
+                this.onDownSwipeSignal.dispatch();
+            } else if (dy < -this._swipeDetectThresholdY) {
+                this._swipeTriggered = true;
+                this.onUpSwipeSignal.dispatch();
             }
         }
     }
@@ -107,9 +133,11 @@ export class SwipeController {
             e.preventDefault();
             return;
         }
-        let dy = Math.abs(e.touches[0].clientY - this._touchStartY);
-        if (dy > 10) {
-            this._preventSwiping = true;
+        const dy = e.touches[0].clientY - this._touchStartY;
+        if (Math.abs(dy) >= 10
+            && this.onDownSwipeSignal.listeners.length == 0
+            && this.onUpSwipeSignal.listeners.length == 0) {
+            this._preventSwipeDispatch = true;
         }
     }
 
@@ -119,7 +147,7 @@ export class SwipeController {
 
     private onTouchStarted(e: TouchEvent) {
         if (!this._enabled) return;
-        this._preventSwiping = false;
+        this._preventSwipeDispatch = false;
         this._swipeTriggered = false;
         this._swipeDetecting = false;
         this._touchStartX = e.touches[0].clientX;
@@ -127,8 +155,10 @@ export class SwipeController {
     }
 
     private onTouchMove(e: TouchEvent) {
-        if (!this._enabled || this._preventSwiping) return;
-        this.checkForSwipe(e.touches[0].clientX - this._touchStartX);
+        if (!this._enabled) return;
+        const dx = e.touches[0].clientX - this._touchStartX;
+        const dy = e.touches[0].clientY - this._touchStartY;
+        this.checkForSwipe(dx, dy);
         this.checkPreventScrolling(e);
         if (!this._isSwiping) {
             this._isSwiping = true;
@@ -145,15 +175,18 @@ export class SwipeController {
     }
 
     private onMouseDown(e: MouseEvent) {
-        if (!this._enabled) return;
+        if (!this._enabled || this._useTouchOnly) return;
         this._isMouseDown = true;
         this._mouseStartX = e.clientX;
+        this._mouseStartY = e.clientY;
     }
 
     private onMouseMove(e: MouseEvent) {
-        if (!this._enabled) return;
+        if (!this._enabled || this._useTouchOnly) return;
         if (!this._isMouseDown) return;
-        this.checkForSwipe(e.clientX - this._mouseStartX);
+        const dx = e.clientX - this._mouseStartX;
+        const dy = e.clientY - this._mouseStartY;
+        this.checkForSwipe(dx, dy);
         if (!this._isSwiping) {
             this._isSwiping = true;
             this.onSwipeStartSignal.dispatch();
@@ -161,7 +194,7 @@ export class SwipeController {
     }
 
     private onMouseUp() {
-        if (!this._enabled) return;
+        if (!this._enabled || this._useTouchOnly) return;
         this._isMouseDown = false;
         this._swipeTriggered = false;
         this._isSwiping = false;
