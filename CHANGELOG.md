@@ -2,9 +2,18 @@
 
 #Changelog
 
+## v1.0.14
+* Breaking Change: removed `SwipeController.swipeDetectThreshold`
+* Added: `SwipeController.onDownSwipeSignal`
+* Added: `SwipeController.onUpSwipeSignal`
+* Added: `SwipeController.onSwipingSignal` which dispatches `{dx: number, dy: number}` 
+* Added: `SwipeController.swipeDetectThresholdX`
+* Added: `SwipeController.swipeDetectThresholdY`
+* Added: `SwipeController.useTouchOnly`
+
 ## v1.0.13
-* Added: `DOMUtils.enablePageScrolling
-* Added: `DOMUtils.disablePageScrolling
+* Added: `DOMUtils.enablePageScrolling`
+* Added: `DOMUtils.disablePageScrolling`
 
 ## v1.0.12
 * Added: `DOMUtils.calcElementWidth(element)`
